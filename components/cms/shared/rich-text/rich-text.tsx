@@ -1,10 +1,11 @@
 import { PortableText } from 'next-sanity';
-import { Richtext } from '../../../lib/sanity/types/sanity-types';
+
 import { textComponents } from './text-components';
 
 interface RichTextProps {
-  value: Richtext;
+  value: Parameters<typeof PortableText>[0]['value'];
 }
+
 export const RichText = (props: RichTextProps) => {
-  return <PortableText value={props.value.richtextBody} components={textComponents} />;
+  return <PortableText value={props.value} components={textComponents} />;
 };

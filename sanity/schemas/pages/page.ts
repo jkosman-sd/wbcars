@@ -88,7 +88,11 @@ export const pageType = defineType({
       title: 'Sekcje',
       description: 'Lista sekcji budujących zawartość strony',
       of: [
+        { type: 'heroSection' },
         { type: 'imageSection' },
+        { type: 'contactSection' },
+        { type: 'subheadingSection' },
+        { type: 'instagramCarouselSection' },
         // Możesz tutaj dodać więcej typów sekcji w przyszłości
       ],
       validation: (Rule) => Rule.required().min(1),
