@@ -9,7 +9,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 
 import { schemaTypes } from './schemas';
 
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io';
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE;
 
 export default defineConfig({
   basePath: '/studio',

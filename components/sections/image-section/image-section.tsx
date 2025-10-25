@@ -26,10 +26,10 @@ export const ImageSection = (props: ImageSectionProps) => {
         {/* Content section */}
         <div className='flex grow flex-col gap-4 px-4 pt-8 pb-6 md:px-8 md:pt-12 md:pb-8 lg:gap-4 lg:pt-20 lg:pr-16 lg:pb-6 lg:pl-0'>
           {/* Yellow accent line */}
-          <div className='h-[2px] w-full bg-primary' />
+          <div className='h-0.5 w-full bg-primary' />
 
           {/* Title */}
-          <h3 className='font-montserrat text-2xl leading-tight font-medium text-foreground uppercase md:text-3xl lg:text-[32px] lg:leading-[32px]'>
+          <h3 className='font-montserrat text-2xl leading-tight font-medium text-foreground uppercase md:text-3xl lg:text-[32px] lg:leading-8'>
             {title}
           </h3>
 

@@ -13,57 +13,6 @@
  */
 
 // Source: schema.json
-export type InstagramCarouselSection = {
-  _type: 'instagramCarouselSection';
-  images: Array<{
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    aspectRatio?: string;
-    _type: 'image';
-    _key: string;
-  }>;
-};
-
-export type SubheadingSection = {
-  _type: 'subheadingSection';
-  text: string;
-};
-
-export type HeroSection = {
-  _type: 'heroSection';
-  title: string;
-  description: string;
-  backgroundImage: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: 'image';
-  };
-};
-
-export type ContactSection = {
-  _type: 'contactSection';
-  title: string;
-  phone: string;
-  address: string;
-  email: string;
-};
-
 export type BlockContentSection = Array<
   | {
       children?: Array<{
@@ -154,21 +103,9 @@ export type Page = {
     noIndex?: boolean;
   };
   sections: Array<
-    | ({
-        _key: string;
-      } & HeroSection)
-    | ({
-        _key: string;
-      } & ImageSection)
-    | ({
-        _key: string;
-      } & ContactSection)
-    | ({
-        _key: string;
-      } & SubheadingSection)
-    | ({
-        _key: string;
-      } & InstagramCarouselSection)
+    {
+      _key: string;
+    } & ImageSection
   >;
 };
 
@@ -326,10 +263,6 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
-  | InstagramCarouselSection
-  | SubheadingSection
-  | HeroSection
-  | ContactSection
   | BlockContentSection
   | ImageSection
   | ResponsiveImage
@@ -393,33 +326,33 @@ export type PageQueryResult = {
     } | null;
     noIndex: boolean | null;
   } | null;
-  sections: Array<
-    | {
-        _key: string;
-        _type: 'contactSection';
-        title: string;
-        description: null;
-        text: null;
-        images: null;
-        body: null;
-        image: null;
-        backgroundImage: null;
-        layout: null;
-        fullWidth: null;
-        phone: string;
-        address: string;
-        email: string;
-      }
-    | {
-        _key: string;
-        _type: 'heroSection';
-        title: string;
-        description: string;
-        text: null;
-        images: null;
-        body: null;
-        image: null;
-        backgroundImage: {
+  sections: Array<{
+    _key: string;
+    _type: 'imageSection';
+    title: string;
+    description: null;
+    text: null;
+    images: null;
+    body: Array<
+      | {
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: 'span';
+            _key: string;
+          }>;
+          style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
+          listItem?: 'bullet';
+          markDefs?: Array<{
+            href?: string;
+            _type: 'link';
+            _key: string;
+          }>;
+          level?: number;
+          _type: 'block';
+          _key: string;
+        }
+      | {
           asset: {
             _id: string;
             _type: 'sanity.imageAsset';
@@ -445,175 +378,51 @@ export type PageQueryResult = {
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
-          alt: string;
-          _type: 'image';
-        };
-        layout: null;
-        fullWidth: null;
-        phone: null;
-        address: null;
-        email: null;
-      }
-    | {
-        _key: string;
-        _type: 'imageSection';
-        title: string;
-        description: null;
-        text: null;
-        images: null;
-        body: Array<
-          | {
-              children?: Array<{
-                marks?: Array<string>;
-                text?: string;
-                _type: 'span';
-                _key: string;
-              }>;
-              style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-              listItem?: 'bullet';
-              markDefs?: Array<{
-                href?: string;
-                _type: 'link';
-                _key: string;
-              }>;
-              level?: number;
-              _type: 'block';
-              _key: string;
-            }
-          | {
-              asset: {
-                _id: string;
-                _type: 'sanity.imageAsset';
-                _createdAt: string;
-                _updatedAt: string;
-                _rev: string;
-                originalFilename?: string;
-                label?: string;
-                title?: string;
-                description?: string;
-                altText?: string;
-                sha1hash?: string;
-                extension?: string;
-                mimeType?: string;
-                size?: number;
-                assetId?: string;
-                uploadId?: string;
-                path?: string;
-                url?: string;
-                metadata?: SanityImageMetadata;
-                source?: SanityAssetSourceData;
-              } | null;
-              media?: unknown;
-              hotspot?: SanityImageHotspot;
-              crop?: SanityImageCrop;
-              alt?: string;
-              _type: 'image';
-              _key: string;
-            }
-        >;
-        image: {
-          _type: 'responsiveImage';
-          image: {
-            asset: {
-              _id: string;
-              _type: 'sanity.imageAsset';
-              _createdAt: string;
-              _updatedAt: string;
-              _rev: string;
-              originalFilename?: string;
-              label?: string;
-              title?: string;
-              description?: string;
-              altText?: string;
-              sha1hash?: string;
-              extension?: string;
-              mimeType?: string;
-              size?: number;
-              assetId?: string;
-              uploadId?: string;
-              path?: string;
-              url?: string;
-              metadata?: SanityImageMetadata;
-              source?: SanityAssetSourceData;
-            } | null;
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt: string;
-            _type: 'image';
-          };
-          aspectRatio: '1/1' | '13/5' | '3/2' | '3/4' | '4/3' | '9/16';
-        };
-        backgroundImage: null;
-        layout: 'left' | 'right';
-        fullWidth: boolean | null;
-        phone: null;
-        address: null;
-        email: null;
-      }
-    | {
-        _key: string;
-        _type: 'instagramCarouselSection';
-        title: null;
-        description: null;
-        text: null;
-        images: Array<{
-          asset: {
-            _id: string;
-            _type: 'sanity.imageAsset';
-            _createdAt: string;
-            _updatedAt: string;
-            _rev: string;
-            originalFilename?: string;
-            label?: string;
-            title?: string;
-            description?: string;
-            altText?: string;
-            sha1hash?: string;
-            extension?: string;
-            mimeType?: string;
-            size?: number;
-            assetId?: string;
-            uploadId?: string;
-            path?: string;
-            url?: string;
-            metadata?: SanityImageMetadata;
-            source?: SanityAssetSourceData;
-          } | null;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          aspectRatio: string | null;
+          alt?: string;
           _type: 'image';
           _key: string;
-        }>;
-        body: null;
-        image: null;
-        backgroundImage: null;
-        layout: null;
-        fullWidth: null;
-        phone: null;
-        address: null;
-        email: null;
-      }
-    | {
-        _key: string;
-        _type: 'subheadingSection';
-        title: null;
-        description: null;
-        text: string;
-        images: null;
-        body: null;
-        image: null;
-        backgroundImage: null;
-        layout: null;
-        fullWidth: null;
-        phone: null;
-        address: null;
-        email: null;
-      }
-  >;
+        }
+    >;
+    image: {
+      _type: 'responsiveImage';
+      image: {
+        asset: {
+          _id: string;
+          _type: 'sanity.imageAsset';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt: string;
+        _type: 'image';
+      };
+      aspectRatio: '1/1' | '13/5' | '3/2' | '3/4' | '4/3' | '9/16';
+    };
+    backgroundImage: null;
+    layout: 'left' | 'right';
+    fullWidth: boolean | null;
+    phone: null;
+    address: null;
+    email: null;
+  }>;
 } | null;
 // Variable: allPagesQuery
 // Query: *[_type == "page"]{  _id,  title,  slug}
