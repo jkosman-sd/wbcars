@@ -24,6 +24,14 @@ export const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug
     _key,
     _type,
     title,
+    description,
+    text,
+    images[]{
+      ...,
+      asset->,
+      alt,
+      aspectRatio
+    },
     body[]{
       ...,
       _type == 'image' => {
@@ -33,9 +41,21 @@ export const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug
     },
     image{
       ...,
+      image{
+        ...,
+        asset->
+      },
+      aspectRatio
+    },
+    backgroundImage{
+      ...,
       asset->
     },
-    layout
+    layout,
+    fullWidth,
+    phone,
+    address,
+    email
   }
 }`);
 

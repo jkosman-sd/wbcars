@@ -20,15 +20,8 @@ export const imageSection = defineType({
     }),
     defineField({
       name: 'image',
-      type: 'image',
+      type: 'responsiveImage',
       title: 'Grafika',
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-        }),
-      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -42,6 +35,13 @@ export const imageSection = defineType({
         ],
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'fullWidth',
+      type: 'boolean',
+      title: 'Pełna szerokość',
+      description: 'Sekcja zajmie całą dostępną szerokość sekcji',
+      initialValue: false,
     }),
   ],
 });
