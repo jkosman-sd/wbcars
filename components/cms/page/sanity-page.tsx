@@ -6,7 +6,7 @@ import { SanityCarousel } from './components/sanity-carousel';
 import { SanityContactSection } from './components/sanity-contact-section';
 import { SanityHeroSection } from './components/sanity-hero-section';
 import { SanityImageSection } from './components/sanity-image-section';
-import { SanityInstagramCarouselSection } from './components/sanity-instagram-carousel-section';
+import { SanityOfferSection } from './components/sanity-offer-section';
 import { SanitySubheadingSection } from './components/sanity-subheading-section';
 
 type ConfigQueryResultNotNullable = NonNullable<PageQueryResult>;
@@ -24,6 +24,6 @@ export const sanityPageComponents = {
   imageSection: SanityImageSection,
   contactSection: SanityContactSection,
   subheadingSection: SanitySubheadingSection,
-  instagramCarouselSection: SanityInstagramCarouselSection,
   carouselSection: SanityCarousel,
+  offerSection: SanityOfferSection,
 } satisfies SanityPageComponents;

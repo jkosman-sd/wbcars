@@ -63,7 +63,29 @@ export const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug
     showCtaCard,
     ctaText,
     instagramUrl,
-    ctaPosition
+    ctaPosition,
+    _type == 'offerSection' => {
+      packages[]{
+        number,
+        subtitle,
+        title,
+        description,
+        price,
+        image{
+          image{
+            asset->,
+            alt,
+            hotspot
+          },
+          aspectRatio
+        }
+      },
+      additionalOption{
+        label,
+        price
+      },
+      defaultOpenPackage
+    }
   }
 }`);
 

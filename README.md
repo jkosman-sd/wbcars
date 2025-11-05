@@ -343,52 +343,6 @@ Add shared utilities to `lib/`:
 - `lib/result.ts` - Result type patterns for error handling
 - New utility files should use kebab-case naming
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- pnpm (recommended) or npm
-- Sanity account and project
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone [repository-url]
-   cd core2
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   pnpm install
-   ```
-
-3. Set up Sanity:
-
-   ```bash
-   # Login to Sanity (if not already logged in)
-   pnpm sanity login
-
-   # Initialize or link to existing project
-   pnpm sanity init
-   ```
-
-4. Run development server:
-
-   ```bash
-   pnpm dev
-   ```
-
-5. Access the application:
-   - Website: http://localhost:3000
-   - Sanity Studio: http://localhost:3000/studio
-   - Storybook: Run `pnpm storybook` and access http://localhost:6006
-
 ### Available Scripts
 
 ```bash
@@ -524,26 +478,8 @@ When working on this codebase, always follow these principles:
    - Use semantic HTML
    - Generate structured data where applicable
 
----
-
-## 📝 Project Status & Notes
-
-### Current State
-
-- ✅ Basic project structure established
-- ✅ Sanity CMS integration complete
-- ✅ Component architecture defined
-- ✅ Image section implemented as example
-- 🔄 Additional sections to be added as needed
-
-### Important Reminders
-
-- Always test mobile responsiveness on real devices
-- Run accessibility checks before deploying major changes
-- Keep Sanity schemas synchronized with TypeScript types
-- Document any new patterns or architectural decisions here
-
----
+9. **Additional**:
+   - Use icons like this - <Icon name='Instagram' className='size-8 text-primary' />
 
 ## 📚 Useful Resources
 

@@ -1,18 +1,15 @@
 type CustomAspectRatio = { type_: 'custom'; value: string };
 
-export type AspectRatio = '3/4' | '9/16' | '6/18' | '1/1' | '4/3' | '13/5' | '2/3' | '3/2' | CustomAspectRatio;
+export type AspectRatio = '3/4' | '9/16' | '16/9' | '6/18' | '1/1' | '4/3' | '13/5' | '2/3' | '3/2' | CustomAspectRatio;
 
-export const aspectRatioToClassName = {
-  '2/3': 'pb-2/3',
-  '3/2': 'pb-3/2',
-  '3/4': 'pb-3/4',
-  '9/16': 'pb-9/16',
-  '6/18': 'pb-6/18',
-  '1/1': 'pb-1/1',
-  '4/3': 'pb-4/3',
-  '13/5': 'pb-13/5',
-} satisfies {
-  [K in Exclude<AspectRatio, CustomAspectRatio>]: unknown;
+export const aspectRatioToClassName: Record<string, string> = {
+  '9/16': 'aspect-[9/16]',
+  '3/4': 'aspect-[3/4]',
+  '16/9': 'aspect-video',
+  '1/1': 'aspect-square',
+  '4/3': 'aspect-[4/3]',
+  '3/2': 'aspect-[3/2]',
+  '13/5': 'aspect-[13/5]',
 };
 
 export const countAspectRatio = (aspectRatio: AspectRatio) => {

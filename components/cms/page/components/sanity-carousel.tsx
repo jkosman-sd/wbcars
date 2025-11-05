@@ -1,8 +1,7 @@
-import { Instagram } from 'lucide-react';
-
 import { PageSectionItem } from '@/components/cms/page/sanity-page';
 import { PageSection } from '@/components/layout/page-section/page-section';
 import { Carousel, type CarouselItem } from '@/components/sections/carousel/carousel';
+import { Icon } from '@/components/ui/icon';
 import { AspectRatio } from '@/components/ui/image/aspect-ratio';
 import { ResponsiveImage } from '@/components/ui/image/image';
 
@@ -37,7 +36,7 @@ export const SanityCarousel = (props: SanityCarouselProps) => {
       type: 'cta',
       text: section.ctaText || 'Po więcej zapraszamy na nasze konto na instagramie',
       url: section.instagramUrl,
-      icon: <Instagram className='size-8 text-primary' />,
+      icon: <Icon name='Instagram' className='size-8 text-primary' />,
     };
 
     const position = section.ctaPosition ?? 2;
@@ -45,7 +44,7 @@ export const SanityCarousel = (props: SanityCarouselProps) => {
   }
 
   return (
-    <PageSection key={section._key} fullWidth>
+    <PageSection key={section._key} className='overflow-hidden'>
       <Carousel items={imageItems} />
     </PageSection>
   );
