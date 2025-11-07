@@ -51,18 +51,13 @@ export const OfferSection = (props: OfferSectionProps) => {
     <section ref={sectionRef} className='relative w-full bg-background'>
       <div className='grid lg:grid-cols-2'>
         {/* Left side - Car Image with crossfade animation */}
-        <div className='relative aspect-video w-full overflow-hidden lg:aspect-auto lg:self-stretch'>
+        <div className='relative aspect-video w-full lg:aspect-auto lg:self-stretch'>
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              style={{
-                willChange: activePackage === pkg.id ? 'opacity' : 'auto',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-              }}
               className={cn(
-                'absolute inset-0 transition-opacity duration-500 ease-in-out',
-                activePackage === pkg.id ? 'z-10 opacity-100' : 'z-0 opacity-0'
+                'absolute inset-0 transition-all duration-600 ease-in-out',
+                activePackage === pkg.id ? 'opacity-100' : 'pointer-events-none opacity-0'
               )}
             >
               {pkg.image}
