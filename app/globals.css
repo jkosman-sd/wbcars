@@ -32,11 +32,11 @@
   
   /* Fonts */
   --font-sans: var(--font-montserrat);
-  --font-heading: var(--font-orbitron);
+  --font-heading: var(--font-michroma);
   
   /* Custom font families */
   --font-family-montserrat: var(--font-montserrat), sans-serif;
-  --font-family-orbitron: var(--font-orbitron), sans-serif;
+  --font-family-michroma: var(--font-michroma), sans-serif;
 }
 
 :root {
@@ -112,8 +112,8 @@
     font-family: var(--font-montserrat), sans-serif;
   }
   
-  .font-orbitron {
-    font-family: var(--font-orbitron), sans-serif;
+  .font-michroma {
+    font-family: var(--font-michroma), sans-serif;
   }
   
   /* Aspect ratio utilities using padding-bottom technique */

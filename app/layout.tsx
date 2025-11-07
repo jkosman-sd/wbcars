@@ -2,7 +2,7 @@ import './globals.css';
 
 import React from 'react';
 import type { Metadata } from 'next';
-import { Montserrat, Orbitron } from 'next/font/google';
+import { Michroma, Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -11,10 +11,10 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-const orbitron = Orbitron({
-  variable: '--font-orbitron',
+const michroma = Michroma({
+  variable: '--font-michroma',
   subsets: ['latin'],
-  weight: ['400', '600', '700', '900'],
+  weight: ['400'],
   display: 'swap',
 });
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pl'>
-      <body className={`${montserrat.variable} ${orbitron.variable} antialiased`}>{children}</body>
+      <body className={`${montserrat.variable} ${michroma.variable} antialiased`}>{children}</body>
     </html>
   );
 }

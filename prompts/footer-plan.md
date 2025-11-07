@@ -117,7 +117,7 @@ The footer component is a comprehensive site footer with company branding, conta
 - [ ] **No new dependencies required** - all functionality can be achieved with existing stack
 - [ ] **Font considerations**:
   - "Uniwars" font: Check if available via Google Fonts or needs custom font loading
-  - Fallback to existing heading font (Orbitron) if Uniwars unavailable
+  - Fallback to existing heading font (Michroma) if Uniwars unavailable
 - [ ] **Sanity schema update**:
   - Add new fields to existing settings schema
   - Run `pnpm typegen` to regenerate TypeScript types
@@ -128,7 +128,7 @@ The footer component is a comprehensive site footer with company branding, conta
 
 ## 7. Open Questions
 
-- [ ] **Font availability**: Is "Uniwars" font available for web use, or should we use Orbitron as fallback for "Follow us" text?
+- [ ] **Font availability**: Is "Uniwars" font available for web use, or should we use Michroma as fallback for "Follow us" text?
 - [ ] **Logo source**: Should the footer logo be the same as the main site logo, or a specific footer variant?
 - [ ] **Image content**: Should the showcase image be configurable via CMS, or use a default company image?
 - [ ] **Social platforms**: Are Facebook and Instagram the only required social platforms, or should the system support all platforms defined in the settings schema?

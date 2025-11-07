@@ -37,8 +37,15 @@ export const OfferSection = (props: OfferSectionProps) => {
     setActivePackage(value);
 
     // Scroll to the beginning of the section (image) on mobile
-    if (typeof window !== 'undefined' && window.innerWidth < 976) {
-      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof window !== 'undefined' && window.innerWidth < 976 && sectionRef.current) {
+      const header = document.querySelector('header');
+      const headerHeight = header?.offsetHeight || 0;
+      const sectionTop = sectionRef.current.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: sectionTop - headerHeight,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -91,7 +98,7 @@ export const OfferSection = (props: OfferSectionProps) => {
                 <div className='flex flex-col items-start'>
                   <span
                     className={cn(
-                      'font-orbitron text-base leading-8 font-light md:text-xl lg:text-2xl',
+                      'font-michroma text-base leading-8 font-light md:text-xl lg:text-2xl',
                       activePackage === pkg.id ? 'text-primary-foreground' : 'text-muted'
                     )}
                   >
@@ -99,7 +106,7 @@ export const OfferSection = (props: OfferSectionProps) => {
                   </span>
                   <span
                     className={cn(
-                      'font-orbitron text-2xl leading-8 font-semibold md:text-3xl lg:text-[32px]',
+                      'font-michroma text-2xl leading-8 font-semibold md:text-3xl lg:text-[32px]',
                       activePackage === pkg.id ? 'text-primary-foreground' : 'text-muted'
                     )}
                   >
@@ -108,7 +115,7 @@ export const OfferSection = (props: OfferSectionProps) => {
                 </div>
                 <span
                   className={cn(
-                    'font-orbitron text-4xl leading-none font-normal md:text-5xl lg:text-[64px]',
+                    'font-michroma text-4xl leading-none font-normal md:text-5xl lg:text-[64px]',
                     activePackage === pkg.id ? 'text-primary-foreground' : 'text-muted-foreground'
                   )}
                 >
@@ -167,10 +174,10 @@ export const OfferSection = (props: OfferSectionProps) => {
       {/* Summary Section */}
       <div className='grid bg-primary-foreground'>
         <div className='flex items-center justify-between bg-primary px-6 py-6 md:px-8 lg:px-10 lg:pr-16'>
-          <p className='font-orbitron text-2xl font-semibold text-primary-foreground uppercase md:text-3xl lg:text-[32px]'>
+          <p className='font-michroma text-2xl font-semibold text-primary-foreground uppercase md:text-3xl lg:text-[32px]'>
             Suma
           </p>
-          <p className='font-orbitron text-2xl font-bold text-primary-foreground md:text-3xl lg:text-[40px]'>
+          <p className='font-michroma text-2xl font-bold text-primary-foreground md:text-3xl lg:text-[40px]'>
             od {totalPrice} zł
           </p>
         </div>

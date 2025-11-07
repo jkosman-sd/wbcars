@@ -104,7 +104,7 @@ export function Footer({ logo, showcaseImage, contact, socialLinks }: FooterProp
           <div className='mt-6 flex flex-col items-start justify-between gap-4 lg:mt-8 lg:flex-row lg:items-center'>
             {/* Follow Us Text */}
             <div>
-              <h3 className='font-orbitron text-3xl font-semibold text-white uppercase lg:text-[48px] lg:leading-none'>
+              <h3 className='font-michroma text-3xl font-semibold text-white uppercase lg:text-[48px] lg:leading-none'>
                 Follow us
               </h3>
             </div>

@@ -106,7 +106,7 @@ export const Header = ({ navigationLinks, className }: PageHeaderProps) => {
     >
       <div className='m-auto flex w-full max-w-7xl items-center justify-between py-4'>
         {/* Logo */}
-        <Link href='/' className='relative flex h-32 w-80 shrink-0' aria-label='Strona główna'>
+        <Link href='/' className='relative flex h-16 w-80 shrink-0' aria-label='Strona główna'>
           <Image
             src='/images/wb-cars-logo.svg'
             alt='WB Cars Logo'

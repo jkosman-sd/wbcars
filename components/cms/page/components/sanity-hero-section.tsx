@@ -13,7 +13,7 @@ export const SanityHeroSection = (props: SanityHeroSectionProps) => {
       <HeroSection
         title={section.title}
         description={section.description}
-        backgroundImage={
+        image={
           section.backgroundImage.asset?.url && (
             <Image
               className='object-cover object-center'

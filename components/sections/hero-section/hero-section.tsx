@@ -1,44 +1,26 @@
 import React from 'react';
 
-import { HeroMask } from './hero-mask';
-
 interface HeroSectionProps {
   title: string;
   description: string;
-  backgroundImage: React.ReactNode;
+  image: React.ReactNode;
 }
 
 export const HeroSection = (props: HeroSectionProps) => {
-  const { title, description, backgroundImage } = props;
+  const { title, description, image } = props;
 
   return (
     <section className='relative h-[500px] w-full overflow-hidden bg-background md:h-[600px] lg:h-[723px]'>
-      <HeroMask />
-
       <div className='absolute top-0 right-0 h-full w-[60%] md:w-[55%] lg:w-[917px]'>
-        <div
-          className='absolute inset-0'
-          style={{
-            mask: 'url(#hero-diagonal-mask)',
-            WebkitMask: 'url(#hero-diagonal-mask)',
-            maskSize: 'contain',
-            WebkitMaskSize: 'contain',
-            maskPosition: 'right center',
-            WebkitMaskPosition: 'right center',
-            maskRepeat: 'no-repeat',
-            WebkitMaskRepeat: 'no-repeat',
-          }}
-        >
-          {backgroundImage}
-        </div>
+        <div className='absolute inset-0'>{image}</div>
       </div>
 
       {/* Content */}
-      <div className='relative flex h-full items-center'>
-        <div className='container mx-auto px-4 md:px-8 lg:px-16'>
-          <div className='flex max-w-[634px] flex-col gap-6 lg:py-[24px] lg:pl-[64px]'>
+      <div className='relative flex h-full items-end lg:items-center'>
+        <div className='container mb-10 lg:mx-auto lg:px-16'>
+          <div className='flex max-w-[500] flex-col gap-6 rounded-lg bg-black/30 p-4 backdrop-blur-md md:max-w-[634px] lg:bg-transparent lg:p-0 lg:backdrop-blur-none'>
             {/* Title */}
-            <h1 className='font-orbitron text-4xl leading-normal font-normal text-primary uppercase md:text-5xl lg:text-[56px]'>
+            <h1 className='font-michroma text-4xl leading-normal font-normal text-primary uppercase md:text-5xl lg:text-[56px]'>
               {title}
             </h1>
 

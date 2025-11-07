@@ -24,7 +24,7 @@ const mockPackages = [
     image: (
       <div className='flex size-full items-center justify-center bg-linear-to-br from-gray-700 to-gray-900'>
         <div className='text-center'>
-          <p className='font-orbitron text-3xl font-bold text-primary'>OPTIMUM</p>
+          <p className='font-michroma text-3xl font-bold text-primary'>OPTIMUM</p>
           <p className='text-sm text-gray-400'>755 x 474</p>
         </div>
       </div>
@@ -41,7 +41,7 @@ const mockPackages = [
     image: (
       <div className='flex size-full items-center justify-center bg-linear-to-br from-amber-700 to-orange-900'>
         <div className='text-center'>
-          <p className='font-orbitron text-3xl font-bold text-primary'>FULL FRONT</p>
+          <p className='font-michroma text-3xl font-bold text-primary'>FULL FRONT</p>
           <p className='text-sm text-gray-400'>755 x 474</p>
         </div>
       </div>
@@ -57,7 +57,7 @@ const mockPackages = [
     image: (
       <div className='flex size-full items-center justify-center bg-linear-to-br from-yellow-600 to-amber-700'>
         <div className='text-center'>
-          <p className='font-orbitron text-3xl font-bold text-primary-foreground'>FULL BODY</p>
+          <p className='font-michroma text-3xl font-bold text-primary-foreground'>FULL BODY</p>
           <p className='text-sm text-gray-700'>755 x 474</p>
         </div>
       </div>

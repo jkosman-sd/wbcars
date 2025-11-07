@@ -162,11 +162,11 @@ interface OfferSectionProps {
 
 **Typography:**
 
-- Projekt używa `Montserrat` i `Orbitron` (już zdefiniowane w `globals.css`)
-- Figma pokazuje `Uniwars` - **należy zastąpić `Orbitron`** (najbliższy dostępny font)
-- Subtitle (np. "Pakiet"): `font-orbitron text-2xl font-light uppercase`
-- Title (np. "OPTIMUM"): `font-orbitron text-[32px] font-semibold uppercase`
-- Number (np. ".01"): `font-orbitron text-[64px] font-normal`
+- Projekt używa `Montserrat` i `Michroma` (już zdefiniowane w `globals.css`)
+- Figma pokazuje `Uniwars` - **należy zastąpić `Michroma`** (najbliższy dostępny font)
+- Subtitle (np. "Pakiet"): `font-michroma text-2xl font-light uppercase`
+- Title (np. "OPTIMUM"): `font-michroma text-[32px] font-semibold uppercase`
+- Number (np. ".01"): `font-michroma text-[64px] font-normal`
 - Description: `font-montserrat text-xl font-normal`
 - Price: `font-montserrat text-xl font-normal text-right`
 - Additional label ("Dodatkowo"): `font-montserrat text-xs font-normal`
@@ -523,7 +523,7 @@ const componentsMap = {
 
 1. Użyj istniejących design tokens z `globals.css`
 2. Kolory: `bg-primary`, `text-primary-foreground`, `text-muted`, etc.
-3. Fonty: `font-montserrat`, `font-orbitron`
+3. Fonty: `font-montserrat`, `font-michroma`
 4. Spacing: standardowe Tailwind scale (4, 8, 16, 24, 32, 64px)
 
 **Custom Classes (jeśli potrzebne):**
@@ -535,15 +535,15 @@ Dodać do `globals.css` w sekcji `@layer utilities`:
 }
 
 .offer-package-number {
-  @apply font-orbitron text-[64px] leading-none font-normal;
+  @apply font-michroma text-[64px] leading-none font-normal;
 }
 
 .offer-package-title {
-  @apply font-orbitron text-[32px] leading-[32px] font-semibold uppercase;
+  @apply font-michroma text-[32px] leading-[32px] font-semibold uppercase;
 }
 
 .offer-package-subtitle {
-  @apply font-orbitron text-2xl leading-[32px] font-light uppercase;
+  @apply font-michroma text-2xl leading-[32px] font-light uppercase;
 }
 ```
 

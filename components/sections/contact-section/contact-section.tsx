@@ -42,10 +42,10 @@ export const ContactSection = (props: ContactSectionProps) => {
   ];
 
   return (
-    <section className='bg-primary px-4 py-12 md:px-12 md:py-12 lg:px-16 lg:py-12'>
+    <div className='bg-primary px-4 py-12 md:py-12 lg:py-12'>
       <div className='mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-start lg:justify-between'>
         {/* Title */}
-        <h2 className='font-orbitron text-3xl leading-normal font-semibold text-background uppercase md:text-4xl lg:w-[533px] lg:shrink-0 lg:text-[48px] lg:leading-normal'>
+        <h2 className='font-michroma text-3xl leading-normal font-semibold text-background uppercase md:text-4xl lg:w-[533px] lg:shrink-0 lg:text-[48px] lg:leading-normal'>
           {title}
         </h2>
 
@@ -70,6 +70,6 @@ export const ContactSection = (props: ContactSectionProps) => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
