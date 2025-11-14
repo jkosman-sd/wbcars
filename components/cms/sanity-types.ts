@@ -172,24 +172,6 @@ export type Page = {
   >;
 };
 
-export type ResponsiveImage = {
-  _type: 'responsiveImage';
-  image: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: 'image';
-  };
-  aspectRatio: '3/4' | '9/16' | '16/9' | '1/1' | '4/3' | '3/2' | '13/5';
-};
-
 export type Settings = {
   _id: string;
   _type: 'settings';
@@ -210,18 +192,7 @@ export type Settings = {
   phone?: string;
   mail?: string;
   address?: string;
-  footerImage?: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: 'image';
-  };
+  footerImage?: ResponsiveImage;
   social?: Array<{
     media?: 'Twitter' | 'Facebook' | 'Instagram' | 'Linkedin' | 'Youtube';
     url?: string;
@@ -242,6 +213,24 @@ export type Settings = {
     _type: 'image';
   };
   privacyPolicy: BlockContentSection;
+};
+
+export type ResponsiveImage = {
+  _type: 'responsiveImage';
+  image: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: 'image';
+  };
+  aspectRatio: '3/4' | '9/16' | '16/9' | '1/1' | '4/3' | '3/2' | '13/5';
 };
 
 export type SanityImagePaletteSwatch = {
@@ -371,8 +360,8 @@ export type AllSanitySchemaTypes =
   | BlockContentSection
   | ImageSection
   | Page
-  | ResponsiveImage
   | Settings
+  | ResponsiveImage
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -768,7 +757,7 @@ export type NavigationQueryResult = {
   } | null;
 } | null;
 // Variable: settingsQuery
-// Query: *[_type == "settings"][0] {    _id,    title,    description,    keywords,    url,    phone,    address,    mail,    social,    footerImage {      ...,      asset->,      alt,      hotspot,      crop    }  }
+// Query: *[_type == "settings"][0] {    _id,    title,    description,    keywords,    url,    phone,    address,    mail,    social,    footerImage {      ...,      image {        ...,        asset->      }    }  }
 export type SettingsQueryResult = {
   _id: string;
   title: string | null;
@@ -784,33 +773,37 @@ export type SettingsQueryResult = {
     _key: string;
   }> | null;
   footerImage: {
-    asset: {
-      _id: string;
-      _type: 'sanity.imageAsset';
-      _createdAt: string;
-      _updatedAt: string;
-      _rev: string;
-      originalFilename?: string;
-      label?: string;
-      title?: string;
-      description?: string;
-      altText?: string;
-      sha1hash?: string;
-      extension?: string;
-      mimeType?: string;
-      size?: number;
-      assetId?: string;
-      uploadId?: string;
-      path?: string;
-      url?: string;
-      metadata?: SanityImageMetadata;
-      source?: SanityAssetSourceData;
-    } | null;
-    media?: unknown;
-    hotspot: SanityImageHotspot | null;
-    crop: SanityImageCrop | null;
-    _type: 'image';
-    alt: null;
+    _type: 'responsiveImage';
+    image: {
+      asset: {
+        _id: string;
+        _type: 'sanity.imageAsset';
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        originalFilename?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        altText?: string;
+        sha1hash?: string;
+        extension?: string;
+        mimeType?: string;
+        size?: number;
+        assetId?: string;
+        uploadId?: string;
+        path?: string;
+        url?: string;
+        metadata?: SanityImageMetadata;
+        source?: SanityAssetSourceData;
+      } | null;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: 'image';
+    };
+    aspectRatio: '1/1' | '13/5' | '16/9' | '3/2' | '3/4' | '4/3' | '9/16';
   } | null;
 } | null;
 
@@ -821,6 +814,6 @@ declare module '@sanity/client' {
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev,\n  title,\n  slug,\n  metadata{\n    metaTitle,\n    metaDescription,\n    keywords,\n    ogImage{\n      ...,\n      asset->\n    },\n    noIndex\n  },\n  sections[]{\n    _key,\n    _type,\n    id,\n    title,\n    description,\n    text,\n    images[]{\n      ...,\n       image{\n        ...,\n        asset->\n      },\n      asset->,\n      alt,\n      aspectRatio\n    },\n    body[]{\n      ...,\n      _type == 'image' => {\n        ...,\n        asset->\n      }\n    },\n    image{\n      ...,\n      image{\n        ...,\n        asset->\n      },\n      aspectRatio\n    },\n    backgroundImage{\n      ...,\n      asset->\n    },\n    layout,\n    fullWidth,\n    phone,\n    address,\n    email,\n    showCtaCard,\n    ctaText,\n    instagramUrl,\n    ctaPosition,\n    _type == 'offerSection' => {\n      packages[]{\n        number,\n        subtitle,\n        title,\n        description,\n        price,\n        image{\n          image{\n            asset->,\n            alt,\n            hotspot\n          },\n          aspectRatio\n        }\n      },\n      additionalOption{\n        label,\n        price\n      },\n      defaultOpenPackage\n    }\n  }\n}": PageQueryResult;
     '*[_type == "page"]{\n  _id,\n  title,\n  slug\n}': AllPagesQueryResult;
     '*[_type == "settings"][0]{\n  _id,\n  navigation{\n    navigationLinks[]{\n      label,\n      href,\n      external,\n      order\n    } | order(order asc)\n  }\n}': NavigationQueryResult;
-    '\n  *[_type == "settings"][0] {\n    _id,\n    title,\n    description,\n    keywords,\n    url,\n    phone,\n    address,\n    mail,\n    social,\n    footerImage {\n      ...,\n      asset->,\n      alt,\n      hotspot,\n      crop\n    }\n  }\n': SettingsQueryResult;
+    '\n  *[_type == "settings"][0] {\n    _id,\n    title,\n    description,\n    keywords,\n    url,\n    phone,\n    address,\n    mail,\n    social,\n    footerImage {\n      ...,\n      image {\n        ...,\n        asset->\n      }\n    }\n  }\n': SettingsQueryResult;
   }
 }

@@ -3,7 +3,6 @@
 import React, { useRef } from 'react';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 
 export interface OfferPackage {
@@ -30,7 +29,6 @@ export interface OfferSectionProps {
 export const OfferSection = (props: OfferSectionProps) => {
   const { packages, additionalOption, defaultOpenPackage } = props;
   const [activePackage, setActivePackage] = React.useState<string>(defaultOpenPackage || packages[0]?.id || '');
-  const [isAdditionalOptionSelected, setIsAdditionalOptionSelected] = React.useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const handleValueChange = (value: string) => {
@@ -50,12 +48,10 @@ export const OfferSection = (props: OfferSectionProps) => {
   };
 
   const activePackageData = packages.find((pkg) => pkg.id === activePackage);
-  const totalPrice = activePackageData
-    ? activePackageData.price + (isAdditionalOptionSelected && additionalOption ? additionalOption.price : 0)
-    : 0;
+  const totalPrice = activePackageData ? activePackageData.price + (additionalOption ? additionalOption.price : 0) : 0;
 
   return (
-    <section ref={sectionRef} className='relative w-full bg-background pt-8 md:pt-20 lg:pt-24'>
+    <section ref={sectionRef} className='relative w-full bg-background pt-8 pb-8 md:pt-20 md:pb-12 lg:pt-24 lg:pb-16'>
       <div className='grid lg:grid-cols-2'>
         {/* Left side - Car Image with crossfade animation */}
         <div className='relative aspect-video w-full lg:aspect-auto lg:self-stretch'>
@@ -140,28 +136,17 @@ export const OfferSection = (props: OfferSectionProps) => {
                 </div>
                 {/* Additional option */}
                 {additionalOption && (
-                  <div className='flex flex-col gap-1 pt-4'>
-                    <p className='font-montserrat text-xs leading-normal font-normal text-primary-foreground'>
+                  <div className='flex flex-col gap-2 pt-4'>
+                    <p className='font-montserrat text-xs leading-normal font-normal text-primary-foreground md:text-sm lg:text-base'>
                       Dodatkowo
                     </p>
-                    <div className='flex w-full items-center gap-3'>
-                      <Checkbox
-                        id={`additional-${pkg.id}`}
-                        checked={isAdditionalOptionSelected}
-                        onCheckedChange={(checked) => setIsAdditionalOptionSelected(checked === true)}
-                        className='border-primary-foreground data-[state=checked]:bg-primary-foreground data-[state=checked]:text-primary'
-                      />
-                      <label
-                        htmlFor={`additional-${pkg.id}`}
-                        className='font-montserrat flex-1 cursor-pointer text-base leading-normal font-normal text-primary-foreground md:text-lg lg:text-xl'
-                      >
+                    <div className='flex w-full items-center justify-between'>
+                      <p className='font-montserrat text-base leading-normal font-normal text-primary-foreground md:text-lg lg:text-xl'>
                         {additionalOption.label}
-                      </label>
-                      <div className='shrink-0 text-right'>
-                        <p className='font-montserrat text-base leading-normal font-normal text-primary-foreground md:text-lg lg:text-xl'>
-                          +{additionalOption.price} zł
-                        </p>
-                      </div>
+                      </p>
+                      <p className='font-montserrat text-base leading-normal font-normal text-primary-foreground md:text-lg lg:text-xl'>
+                        +{additionalOption.price} zł
+                      </p>
                     </div>
                   </div>
                 )}
@@ -169,18 +154,6 @@ export const OfferSection = (props: OfferSectionProps) => {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
-
-      {/* Summary Section */}
-      <div className='grid bg-primary-foreground'>
-        <div className='flex items-center justify-between bg-primary px-6 py-6 md:px-8 lg:px-10 lg:pr-16'>
-          <p className='font-michroma text-2xl font-semibold text-primary-foreground uppercase md:text-3xl lg:text-[32px]'>
-            Suma
-          </p>
-          <p className='font-michroma text-2xl font-bold text-primary-foreground md:text-3xl lg:text-[40px]'>
-            od {totalPrice} zł
-          </p>
-        </div>
       </div>
     </section>
   );

@@ -27,10 +27,10 @@ export const settingsQuery = defineQuery(`
     social,
     footerImage {
       ...,
-      asset->,
-      alt,
-      hotspot,
-      crop
+      image {
+        ...,
+        asset->
+      }
     }
   }
 `);

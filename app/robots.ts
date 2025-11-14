@@ -7,10 +7,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        ...(isProd ? { allow: '/', disallow: ['/studio'] } : { disallow: '/' }), // Disallow all routes for non-production
+        ...(isProd
+          ? { allow: '/', disallow: ['/studio'] }
+          : { disallow: '/' }), // Disallow all routes for non-production
       },
     ],
-    host: 'https://nameOfSite.pl',
-    sitemap: 'https://nameOfSite.pl/sitemap.xml',
+    host: 'https://wbcars.pl',
+    sitemap: 'https://wbcars.pl/sitemap.xml',
   };
 }

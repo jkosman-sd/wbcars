@@ -15,6 +15,5 @@ export async function Footer() {
     );
   }
 
-  // Dane z settings są już w odpowiednim formacie
   return <SanityFooter {...settings} />;
 }
