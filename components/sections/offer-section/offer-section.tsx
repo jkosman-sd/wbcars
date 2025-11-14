@@ -106,7 +106,7 @@ export const OfferSection = (props: OfferSectionProps) => {
                   </span>
                   <span
                     className={cn(
-                      'font-michroma text-2xl leading-8 font-semibold md:text-3xl lg:text-[32px]',
+                      'font-michroma pb-1 text-2xl leading-8 font-semibold md:text-3xl lg:text-[32px]',
                       activePackage === pkg.id ? 'text-primary-foreground' : 'text-muted'
                     )}
                   >
