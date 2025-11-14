@@ -121,13 +121,10 @@ export const settingsType = defineType({
     }),
     defineField({
       name: 'footerImage',
-      type: 'image',
+      type: 'responsiveImage',
       title: 'Footer Showcase Image',
       description: 'Showcase image displayed in the footer (e.g., car photo)',
       group: 'footer',
-      options: {
-        hotspot: true,
-      },
     }),
     defineField({
       group: 'footer',

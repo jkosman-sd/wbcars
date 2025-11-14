@@ -137,6 +137,7 @@ type ResponsiveImageProps = {
   | {
       loaderType: 'sanity';
       image: SanityAsset;
+      alt: string;
     }
 );
 

@@ -48,14 +48,11 @@ export const pageType = defineType({
           validation: (Rule) => Rule.max(160),
         }),
         defineField({
+          title: 'Meta Keywords',
           name: 'keywords',
           type: 'array',
-          title: 'Słowa kluczowe',
-          description: 'Słowa kluczowe SEO',
           of: [{ type: 'string' }],
-          options: {
-            layout: 'tags',
-          },
+          description: 'Enter SEO Meta Keywords',
         }),
         defineField({
           name: 'ogImage',
