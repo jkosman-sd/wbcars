@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: pageTitle,
     description: pageDescription,
     alternates: {
-      canonical: defaultSettings?.url ? new URL(defaultSettings?.url + slugString) : null,
+      canonical: defaultSettings?.url ? new URL(defaultSettings?.url) : null,
     },
     keywords: pageKeywords,
     authors: [{ name: 'Jakub Kosman Software Development' }, { name: 'Wojciech Szmidt' }],
