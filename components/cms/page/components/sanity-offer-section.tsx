@@ -1,8 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 
 import { PageSection } from '@/components/layout/page-section/page-section';
 import { OfferSection } from '@/components/sections/offer-section/offer-section';
 
+import { countAspectRatio } from '../../../ui/image/aspect-ratio';
+import { sanityLoader } from '../../../ui/image/image';
 import { PageSectionItem } from '../sanity-page';
 
 type SanityOfferSectionProps = PageSectionItem<'offerSection'>;
@@ -28,8 +32,15 @@ export const SanityOfferSection = (props: SanityOfferSectionProps) => {
           fill
           className='object-cover'
           style={{ objectPosition }}
-          sizes='(max-width: 976px) 100vw, 50vw'
-          priority={false}
+          sizes='(max-width: 976px) 80vw, 45vw'
+          priority={index === 0}
+          loader={(loaderProps) =>
+            sanityLoader({
+              ...loaderProps,
+              asset: pkg.image.image,
+              aspectRatio: pkg.image.aspectRatio ? countAspectRatio(pkg.image.aspectRatio) : 16 / 9,
+            })
+          }
         />
       ) : null,
       additionalOption: pkg.additionalOption

@@ -15,7 +15,7 @@ type UnionDeviceSizes = (typeof deviceSizes)[number];
 type ImageSize = `${number}${'vw' | 'px'}`;
 type Sizes = [...`(${'max' | 'min'}-width: ${UnionDeviceSizes}px) ${ImageSize}`[], ImageSize];
 
-const sanityLoader = ({
+export const sanityLoader = ({
   width,
   asset,
   aspectRatio,

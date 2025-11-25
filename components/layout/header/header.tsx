@@ -113,6 +113,7 @@ export const Header = ({ navigationLinks, className }: PageHeaderProps) => {
             fill
             className='object-contain object-left'
             priority
+            sizes={'260px'}
           />
         </Link>
 
