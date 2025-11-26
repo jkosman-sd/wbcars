@@ -108,7 +108,7 @@ export function Footer({ logo, showcaseImage, contact, socialLinks }: FooterProp
                     <a
                       href='https://www.autozygula.pl/'
                       target='_blank'
-                      rel='noopener noreferrer'
+                      rel='noopener'
                       className='font-montserrat text-sm tracking-[0.48px] text-white uppercase underline decoration-solid underline-offset-2 transition-colors hover:text-primary lg:text-base'
                     >
                       Złomowanie pojazdów
