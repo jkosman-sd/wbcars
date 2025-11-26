@@ -1,11 +1,12 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { SanityComponents } from '@/components/cms/sanity-components';
 import type { PageQueryResult } from '@/components/cms/sanity-types';
 import { getClient } from '@/sanity/sanity.client';
 import { pageQuery } from '@/sanity/schemas/pages/page.queries';
+
 import { getSettings } from '../../../sanity/lib/get-settings';
-import { Metadata } from 'next';
 import { urlForImage } from '../../../sanity/schemas/image';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -15,8 +16,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const client = getClient();
   const page = await client.fetch<PageQueryResult>(pageQuery, { slug: slugString });
   const defaultSettings = await getSettings();
-  console.log(page);
-
   // Use page-specific metadata if available, fallback to default settings
   const pageTitle = page?.metadata?.metaTitle || page?.title || defaultSettings?.title || 'WBCars';
   const pageDescription = page?.metadata?.metaDescription || defaultSettings?.description || 'Auto detailing Tarnów';

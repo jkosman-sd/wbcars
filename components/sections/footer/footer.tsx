@@ -1,6 +1,5 @@
-import { PhoneCall, Building2, Mail, Facebook, Instagram } from 'lucide-react';
-
-import { ResponsiveImage } from '@/components/ui/image/image';
+import React from 'react';
+import { Building2, Facebook, Instagram, Mail, PhoneCall } from 'lucide-react';
 
 export interface FooterProps {
   logo: React.ReactNode;

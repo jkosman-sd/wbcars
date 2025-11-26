@@ -22,7 +22,8 @@ export const SanityCarousel = (props: SanityCarouselProps) => {
             image={img.image}
             alt={altText}
             aspectRatio={(img.aspectRatio as AspectRatio) || '1/1'}
-            priority={index === 0}
+            priority={false}
+            sizes={['340px']}
           />
         ) : null,
         alt: altText,

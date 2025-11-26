@@ -27,6 +27,7 @@ export const SanityImageSection = (props: SanityImageSectionProps) => {
               alt={section.image.image.alt || section.title || 'Zdjęcie'}
               aspectRatio={aspectRatio}
               priority={false}
+              sizes={['(max-width: 976px) 75vw', '540px']}
             />
           )
         }
