@@ -91,6 +91,7 @@ export const pageType = defineType({
         { type: 'subheadingSection' },
         { type: 'carouselSection' },
         { type: 'offerSection' },
+        { type: 'faqSection' },
         // Możesz tutaj dodać więcej typów sekcji w przyszłości
       ],
       validation: (Rule) => Rule.required().min(1),

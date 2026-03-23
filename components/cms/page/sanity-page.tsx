@@ -4,6 +4,7 @@ import { PageQueryResult } from '@/components/cms/sanity-types';
 
 import { SanityCarousel } from './components/sanity-carousel';
 import { SanityContactSection } from './components/sanity-contact-section';
+import { SanityFaqSection } from './components/sanity-faq-section';
 import { SanityHeroSection } from './components/sanity-hero-section';
 import { SanityImageSection } from './components/sanity-image-section';
 import { SanityOfferSection } from './components/sanity-offer-section';
@@ -26,4 +27,5 @@ export const sanityPageComponents = {
   subheadingSection: SanitySubheadingSection,
   carouselSection: SanityCarousel,
   offerSection: SanityOfferSection,
+  faqSection: SanityFaqSection,
 } satisfies SanityPageComponents;

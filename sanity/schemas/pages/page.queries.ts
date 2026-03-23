@@ -86,6 +86,19 @@ export const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug
         }
       },
       defaultOpenPackage
+    },
+    _type == 'faqSection' => {
+      items[]{
+        _key,
+        question,
+        answer[]{
+          ...,
+          _type == 'image' => {
+            ...,
+            asset->
+          }
+        }
+      }
     }
   }
 }`);

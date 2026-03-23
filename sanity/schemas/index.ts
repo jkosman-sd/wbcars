@@ -3,6 +3,7 @@ import { pageType } from './pages/page';
 import { blockContentSection } from './sections/block-content-section';
 import { carouselSection } from './sections/carousel-section';
 import { contactSection } from './sections/contact-section';
+import { faqSection } from './sections/faq-section';
 import { heroSection } from './sections/hero-section';
 import { imageSection } from './sections/image-section';
 import { offerSection } from './sections/offer-section';
@@ -20,4 +21,5 @@ export const schemaTypes = [
   subheadingSection,
   carouselSection,
   offerSection,
+  faqSection,
 ];
