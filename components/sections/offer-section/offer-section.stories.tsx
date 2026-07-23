@@ -65,13 +65,17 @@ const mockPackages = [
   },
 ];
 
+const mockPackagesWithOption = mockPackages.map((pkg) => ({
+  ...pkg,
+  additionalOption: {
+    label: 'Zabezpieczenie powłoką ceramiczną',
+    price: 100,
+  },
+}));
+
 export const Default: Story = {
   args: {
-    packages: mockPackages,
-    additionalOption: {
-      label: 'Zabezpieczenie powłoką ceramiczną',
-      price: 100,
-    },
+    packages: mockPackagesWithOption,
     defaultOpenPackage: '.01',
   },
 };
@@ -85,33 +89,21 @@ export const WithoutAdditionalOption: Story = {
 
 export const SecondPackageOpen: Story = {
   args: {
-    packages: mockPackages,
-    additionalOption: {
-      label: 'Zabezpieczenie powłoką ceramiczną',
-      price: 100,
-    },
+    packages: mockPackagesWithOption,
     defaultOpenPackage: '.02',
   },
 };
 
 export const ThirdPackageOpen: Story = {
   args: {
-    packages: mockPackages,
-    additionalOption: {
-      label: 'Zabezpieczenie powłoką ceramiczną',
-      price: 100,
-    },
+    packages: mockPackagesWithOption,
     defaultOpenPackage: '.03',
   },
 };
 
 export const Mobile: Story = {
   args: {
-    packages: mockPackages,
-    additionalOption: {
-      label: 'Zabezpieczenie powłoką ceramiczną',
-      price: 100,
-    },
+    packages: mockPackagesWithOption,
     defaultOpenPackage: '.01',
   },
   parameters: {

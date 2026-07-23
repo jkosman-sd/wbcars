@@ -13,9 +13,13 @@ export interface FooterProps {
     platform: 'Facebook' | 'Instagram' | 'Twitter' | 'Linkedin' | 'Youtube';
     url: string;
   }>;
+  recommendedLinks?: Array<{
+    label: string;
+    href: string;
+  }>;
 }
 
-export function Footer({ logo, showcaseImage, contact, socialLinks }: FooterProps) {
+export function Footer({ logo, showcaseImage, contact, socialLinks, recommendedLinks }: FooterProps) {
   const getSocialIcon = (platform: string) => {
     switch (platform) {
       case 'Facebook':
@@ -97,24 +101,27 @@ export function Footer({ logo, showcaseImage, contact, socialLinks }: FooterProp
                 </div>
               </div>
 
-              {/* Polecane strony */}
-              <div className='mt-12 lg:mt-16'>
-                <h2 className='font-montserrat text-2xl font-bold tracking-[3.2px] text-primary uppercase lg:text-[32px]'>
-                  Polecane strony
-                </h2>
-                <ul className='mt-2'>
-                  <li>
-                    <a
-                      href='https://www.autozygula.pl/'
-                      target='_blank'
-                      rel='noopener'
-                      className='font-montserrat text-sm tracking-[0.48px] text-white uppercase underline decoration-solid underline-offset-2 transition-colors hover:text-primary lg:text-base'
-                    >
-                      Złomowanie pojazdów
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              {recommendedLinks && recommendedLinks.length > 0 && (
+                <div className='mt-12 lg:mt-16'>
+                  <h2 className='font-montserrat text-2xl font-bold tracking-[3.2px] text-primary uppercase lg:text-[32px]'>
+                    Polecane strony
+                  </h2>
+                  <ul className='mt-2 flex flex-col gap-1'>
+                    {recommendedLinks.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='font-montserrat text-sm tracking-[0.48px] text-white uppercase underline decoration-solid underline-offset-2 transition-colors hover:text-primary lg:text-base'
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
 
@@ -142,6 +149,21 @@ export function Footer({ logo, showcaseImage, contact, socialLinks }: FooterProp
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Credit */}
+          <div className='mt-6 border-t border-white/10 pt-4 lg:mt-8'>
+            <p className='font-montserrat text-xs tracking-[0.48px] text-white/40 uppercase'>
+              Realizacja:{' '}
+              <a
+                href='https://ksz-web.pl'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='transition-colors hover:text-primary'
+              >
+                ksz-web.pl
+              </a>
+            </p>
           </div>
         </div>
       </div>

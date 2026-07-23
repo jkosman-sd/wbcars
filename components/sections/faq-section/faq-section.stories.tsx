@@ -19,9 +19,8 @@ const sampleItems = [
     question: 'Jak długo trwa detailing samochodu?',
     answer: (
       <p>
-        Czas detailingu zależy od zakresu usługi. Podstawowe mycie i odkurzanie zajmuje około 2–3
-        godzin, natomiast pełny detailing z korektą lakieru i powłoką ceramiczną może potrwać nawet
-        2–3 dni.
+        Czas detailingu zależy od zakresu usługi. Podstawowe mycie i odkurzanie zajmuje około 2–3 godzin, natomiast
+        pełny detailing z korektą lakieru i powłoką ceramiczną może potrwać nawet 2–3 dni.
       </p>
     ),
     answerPlainText:
@@ -31,9 +30,8 @@ const sampleItems = [
     question: 'Czy powłoka ceramiczna chroni przed zarysowaniami?',
     answer: (
       <p>
-        Powłoka ceramiczna zwiększa twardość powierzchni lakieru i zapewnia ochronę przed drobnymi
-        zarysowaniami, pyłem i promieniowaniem UV. Nie jest jednak odporna na głębokie rysy
-        mechaniczne.
+        Powłoka ceramiczna zwiększa twardość powierzchni lakieru i zapewnia ochronę przed drobnymi zarysowaniami, pyłem
+        i promieniowaniem UV. Nie jest jednak odporna na głębokie rysy mechaniczne.
       </p>
     ),
     answerPlainText:
@@ -43,8 +41,8 @@ const sampleItems = [
     question: 'Jak często powinienem oddawać auto do detailingu?',
     answer: (
       <p>
-        Zalecamy profesjonalny detailing co 6–12 miesięcy, w zależności od warunków użytkowania
-        pojazdu. Regularne mycie należy wykonywać częściej — co 2–4 tygodnie.
+        Zalecamy profesjonalny detailing co 6–12 miesięcy, w zależności od warunków użytkowania pojazdu. Regularne mycie
+        należy wykonywać częściej — co 2–4 tygodnie.
       </p>
     ),
     answerPlainText:
@@ -54,8 +52,8 @@ const sampleItems = [
     question: 'Czy mogę umówić się na wizytę online?',
     answer: (
       <p>
-        Tak, przyjmujemy rezerwacje przez formularz na stronie oraz telefonicznie. Zalecamy
-        wcześniejszy kontakt, ponieważ terminy rozchodzą się szybko, szczególnie w sezonie letnim.
+        Tak, przyjmujemy rezerwacje przez formularz na stronie oraz telefonicznie. Zalecamy wcześniejszy kontakt,
+        ponieważ terminy rozchodzą się szybko, szczególnie w sezonie letnim.
       </p>
     ),
     answerPlainText:
@@ -65,8 +63,8 @@ const sampleItems = [
     question: 'Jakie pojazdy obsługujecie?',
     answer: (
       <p>
-        Obsługujemy samochody osobowe, SUV-y, samochody sportowe oraz pojazdy premium i luksusowe.
-        Każde zlecenie traktujemy indywidualnie, dopasowując zakres usług do potrzeb klienta.
+        Obsługujemy samochody osobowe, SUV-y, samochody sportowe oraz pojazdy premium i luksusowe. Każde zlecenie
+        traktujemy indywidualnie, dopasowując zakres usług do potrzeb klienta.
       </p>
     ),
     answerPlainText:

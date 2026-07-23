@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import imageUrlBuilder from '@sanity/image-url';
-import { SanityAsset } from '@sanity/image-url/lib/types/types';
+import { createImageUrlBuilder, SanityAsset } from '@sanity/image-url';
 import NextImage from 'next/image';
 
 import { deviceSizes } from '@/device-sizes';
@@ -26,7 +25,7 @@ export const sanityLoader = ({
   aspectRatio?: number;
   quality?: number;
 }) => {
-  const sanityBuilder = imageUrlBuilder({
+  const sanityBuilder = createImageUrlBuilder({
     dataset,
     projectId,
   });

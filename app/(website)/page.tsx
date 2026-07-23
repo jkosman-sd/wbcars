@@ -1,10 +1,11 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { SanityComponents } from '@/components/cms/sanity-components';
 import type { PageQueryResult } from '@/components/cms/sanity-types';
 import { getClient } from '@/sanity/sanity.client';
 import { pageQuery } from '@/sanity/schemas/pages/page.queries';
-import { Metadata } from 'next';
+
 import { getSettings } from '../../sanity/lib/get-settings';
 import { urlForImage } from '../../sanity/schemas/image';
 

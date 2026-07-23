@@ -7,9 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        ...(isProd
-          ? { allow: '/', disallow: ['/studio'] }
-          : { disallow: '/' }), // Disallow all routes for non-production
+        ...(isProd ? { allow: '/', disallow: ['/studio'] } : { disallow: '/' }), // Disallow all routes for non-production
       },
     ],
     host: 'https://wbcars.pl',

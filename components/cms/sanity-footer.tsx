@@ -23,7 +23,7 @@ export function SanityFooter(props: SanityFooterData) {
     <ResponsiveImage
       loaderType='sanity'
       image={props.footerImage.image}
-      aspectRatio={props.footerImage.aspectRatio as any}
+      aspectRatio={props.footerImage.aspectRatio}
       alt={props.footerImage.image.alt || 'Footer showcase image'}
       sizes={['240px']}
     />
@@ -50,6 +50,7 @@ export function SanityFooter(props: SanityFooterData) {
           }))
           .filter((social) => social.url) || []
       }
+      recommendedLinks={props.recommendedLinks?.filter((l) => l.label && l.href) ?? []}
     />
   );
 }

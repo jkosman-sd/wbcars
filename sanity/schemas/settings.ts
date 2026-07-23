@@ -1,4 +1,4 @@
-import { CogIcon } from '@sanity/icons';
+import { CogIcon } from '@sanity/icons/Cog';
 import { defineField, defineType } from 'sanity';
 
 export const settingsType = defineType({
@@ -125,6 +125,36 @@ export const settingsType = defineType({
       title: 'Footer Showcase Image',
       description: 'Showcase image displayed in the footer (e.g., car photo)',
       group: 'footer',
+    }),
+    defineField({
+      name: 'recommendedLinks',
+      type: 'array',
+      title: 'Polecane strony',
+      group: 'footer',
+      description:
+        'Linki wyświetlane w stopce w sekcji "Polecane strony". Jeśli puste — sekcja nie pojawi się w stopce.',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'label',
+              type: 'string',
+              title: 'Etykieta',
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'href',
+              type: 'url',
+              title: 'URL',
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: { title: 'label', subtitle: 'href' },
+          },
+        },
+      ],
     }),
     defineField({
       group: 'footer',
