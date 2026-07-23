@@ -55,6 +55,14 @@ export type FaqSection = {
   }>;
 };
 
+export type InstagramSection = {
+  _type: 'instagramSection';
+  heading?: string;
+  profileHandle: string;
+  postCount: number;
+  showFollowButton?: boolean;
+};
+
 export type OfferSection = {
   _type: 'offerSection';
   packages: Array<{
@@ -214,6 +222,9 @@ export type Page = {
     | ({
         _key: string;
       } & FaqSection)
+    | ({
+        _key: string;
+      } & InstagramSection)
   >;
 };
 
@@ -398,6 +409,7 @@ export type SanityAssetSourceData = {
 
 export type AllSanitySchemaTypes =
   | FaqSection
+  | InstagramSection
   | OfferSection
   | CarouselSection
   | SubheadingSection
@@ -852,6 +864,31 @@ export type PageQueryResult = {
         ctaText: null;
         instagramUrl: null;
         ctaPosition: null;
+      }
+    | {
+        _key: string;
+        _type: 'instagramSection';
+        id: null;
+        title: null;
+        description: null;
+        text: null;
+        images: null;
+        body: null;
+        image: null;
+        backgroundImage: null;
+        layout: null;
+        fullWidth: null;
+        phone: null;
+        address: null;
+        email: null;
+        showCtaCard: null;
+        ctaText: null;
+        instagramUrl: null;
+        ctaPosition: null;
+        heading: string | null;
+        profileHandle: string;
+        postCount: number;
+        showFollowButton: boolean | null;
       }
   >;
 } | null;

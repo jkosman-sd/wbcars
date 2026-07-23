@@ -6,6 +6,7 @@ import { contactSection } from './sections/contact-section';
 import { faqSection } from './sections/faq-section';
 import { heroSection } from './sections/hero-section';
 import { imageSection } from './sections/image-section';
+import { instagramSection } from './sections/instagram-section';
 import { offerSection } from './sections/offer-section';
 import { subheadingSection } from './sections/subheading-section';
 import { settingsType } from './settings';
@@ -22,4 +23,5 @@ export const schemaTypes = [
   carouselSection,
   offerSection,
   faqSection,
+  instagramSection,
 ];

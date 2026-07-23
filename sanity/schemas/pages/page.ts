@@ -92,6 +92,7 @@ export const pageType = defineType({
         { type: 'carouselSection' },
         { type: 'offerSection' },
         { type: 'faqSection' },
+        { type: 'instagramSection' },
         // Możesz tutaj dodać więcej typów sekcji w przyszłości
       ],
       validation: (Rule) => Rule.required().min(1),
