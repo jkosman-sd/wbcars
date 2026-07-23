@@ -1,4 +1,5 @@
 import createImageUrlBuilder from '@sanity/image-url';
+
 import { dataset, projectId } from '@/sanity/sanity.api';
 
 const imageBuilder = createImageUrlBuilder({ projectId, dataset });

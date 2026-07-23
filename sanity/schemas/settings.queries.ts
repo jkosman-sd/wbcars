@@ -29,6 +29,10 @@ export const settingsQuery = defineQuery(`
       label,
       href
     },
+    openGraphImage {
+      ...,
+      asset->
+    },
     footerImage {
       ...,
       image {

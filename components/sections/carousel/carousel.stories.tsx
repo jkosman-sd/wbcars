@@ -17,13 +17,8 @@ type Story = StoryObj<typeof Carousel>;
 
 // Mock car image component
 const MockCarImage = ({ index }: { index: number }) => (
-  <div className="relative size-full bg-muted">
-    <Image
-      src={`https://picsum.photos/seed/${index}/800/800`}
-      alt={`Car ${index + 1}`}
-      fill
-      className="object-cover"
-    />
+  <div className='relative size-full bg-muted'>
+    <Image src={`https://picsum.photos/seed/${index}/800/800`} alt={`Car ${index + 1}`} fill className='object-cover' />
   </div>
 );
 
@@ -44,7 +39,7 @@ export const Default: Story = {
         type: 'cta',
         text: 'Po więcej zapraszamy na nasze konto na instagramie',
         url: 'https://www.instagram.com/wbcarstarnow/',
-        icon: <Instagram className="size-8 text-primary" />,
+        icon: <Instagram className='size-8 text-primary' />,
       },
       {
         type: 'image',
@@ -121,7 +116,7 @@ export const ManyImages: Story = {
         type: 'cta',
         text: 'Po więcej zapraszamy na nasze konto na instagramie',
         url: 'https://www.instagram.com/wbcarstarnow/',
-        icon: <Instagram className="size-8 text-primary" />,
+        icon: <Instagram className='size-8 text-primary' />,
       },
       {
         type: 'image',

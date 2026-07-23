@@ -23,7 +23,7 @@ export const Default: Story = {
     title: 'Detailing bez kompromisów',
     description:
       'Ceramiczna ochrona, samoregenerujące folie, perfekcyjny lakier i czyste wnętrze. Twój samochód zasługuje na najlepszy detailing.',
-    backgroundImage: <Image src={sampleImageUrl} alt='Samochód sportowy' fill className='object-cover object-center' />,
+    image: <Image src={sampleImageUrl} alt='Samochód sportowy' fill className='object-cover object-center' />,
   },
 };
 
@@ -32,7 +32,7 @@ export const ShortTitle: Story = {
     title: 'Premium Detailing',
     description:
       'Ceramiczna ochrona, samoregenerujące folie, perfekcyjny lakier i czyste wnętrze. Twój samochód zasługuje na najlepszy detailing.',
-    backgroundImage: <Image src={sampleImageUrl} alt='Samochód sportowy' fill className='object-cover object-center' />,
+    image: <Image src={sampleImageUrl} alt='Samochód sportowy' fill className='object-cover object-center' />,
   },
 };
 
@@ -41,6 +41,6 @@ export const LongDescription: Story = {
     title: 'Detailing bez kompromisów',
     description:
       'Oferujemy kompleksowe usługi detailingu samochodowego. Ceramiczna ochrona lakieru, samoregenerujące folie PPF, profesjonalne polerowanie, химчистка wnętrza oraz wiele innych usług premium. Twój samochód zasługuje na najwyższą jakość obsługi i ochrony.',
-    backgroundImage: <Image src={sampleImageUrl} alt='Samochód sportowy' fill className='object-cover object-center' />,
+    image: <Image src={sampleImageUrl} alt='Samochód sportowy' fill className='object-cover object-center' />,
   },
 };

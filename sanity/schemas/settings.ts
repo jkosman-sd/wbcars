@@ -131,7 +131,8 @@ export const settingsType = defineType({
       type: 'array',
       title: 'Polecane strony',
       group: 'footer',
-      description: 'Linki wyświetlane w stopce w sekcji "Polecane strony". Jeśli puste — sekcja nie pojawi się w stopce.',
+      description:
+        'Linki wyświetlane w stopce w sekcji "Polecane strony". Jeśli puste — sekcja nie pojawi się w stopce.',
       of: [
         {
           type: 'object',
@@ -140,13 +141,13 @@ export const settingsType = defineType({
               name: 'label',
               type: 'string',
               title: 'Etykieta',
-              validation: (Rule: any) => Rule.required(),
+              validation: (Rule) => Rule.required(),
             },
             {
               name: 'href',
               type: 'url',
               title: 'URL',
-              validation: (Rule: any) => Rule.required(),
+              validation: (Rule) => Rule.required(),
             },
           ],
           preview: {

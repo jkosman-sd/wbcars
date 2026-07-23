@@ -198,13 +198,13 @@ Ponieważ każdy pakiet ma osobny obrazek z różnymi podświetleniami:
 2. **Conditional rendering** - pokazuj tylko obrazek aktywnego pakietu
 3. **Crossfade animation:**
    ```tsx
-   <div className="relative w-full h-full">
-     {packages.map(pkg => (
+   <div className='relative h-full w-full'>
+     {packages.map((pkg) => (
        <div
          key={pkg.id}
          className={cn(
-           "absolute inset-0 transition-opacity duration-500",
-           activePackageId === pkg.id ? "opacity-100" : "opacity-0 pointer-events-none"
+           'absolute inset-0 transition-opacity duration-500',
+           activePackageId === pkg.id ? 'opacity-100' : 'pointer-events-none opacity-0'
          )}
        >
          {pkg.image}

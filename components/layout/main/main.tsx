@@ -4,7 +4,7 @@ interface MainProps {
   children: ReactNode;
 }
 
-export const Main: React.FC<MainProps> = ({ children }) => {
+export const Main = ({ children }: MainProps) => {
   return (
     <main className='flex-1'>
       <article>{children}</article>
