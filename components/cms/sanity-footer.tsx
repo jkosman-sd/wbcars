@@ -50,6 +50,7 @@ export function SanityFooter(props: SanityFooterData) {
           }))
           .filter((social) => social.url) || []
       }
+      recommendedLinks={props.recommendedLinks?.filter((l) => l.label && l.href) ?? []}
     />
   );
 }

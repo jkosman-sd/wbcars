@@ -127,6 +127,35 @@ export const settingsType = defineType({
       group: 'footer',
     }),
     defineField({
+      name: 'recommendedLinks',
+      type: 'array',
+      title: 'Polecane strony',
+      group: 'footer',
+      description: 'Linki wyświetlane w stopce w sekcji "Polecane strony". Jeśli puste — sekcja nie pojawi się w stopce.',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'label',
+              type: 'string',
+              title: 'Etykieta',
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              name: 'href',
+              type: 'url',
+              title: 'URL',
+              validation: (Rule: any) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: { title: 'label', subtitle: 'href' },
+          },
+        },
+      ],
+    }),
+    defineField({
       group: 'footer',
       name: 'social',
       type: 'array',

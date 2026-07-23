@@ -893,6 +893,10 @@ export type SettingsQueryResult = {
     url?: string;
     _key: string;
   }> | null;
+  recommendedLinks: Array<{
+    label: string;
+    href: string;
+  }> | null;
   footerImage: {
     _type: 'responsiveImage';
     image: {
