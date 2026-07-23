@@ -1,22 +1,15 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 import prettierConfig from 'eslint-config-prettier/flat';
 import checkFilePlugin from 'eslint-plugin-check-file';
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 import storybook from "eslint-plugin-storybook";
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   js.configs.recommended,
   prettierConfig,
   {
