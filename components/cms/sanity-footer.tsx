@@ -41,7 +41,11 @@ export function SanityFooter(props: SanityFooterData) {
         phone: props.phone || '',
         address: props.address || '',
         email: props.mail || '',
+        nip: props.nip || undefined,
       }}
+      openingHours={props.openingHours}
+      showPrivacyPolicyLink={(props.privacyPolicy?.length ?? 0) > 0}
+      showTermsOfServiceLink={(props.termsOfService?.length ?? 0) > 0}
       socialLinks={
         props.social
           ?.map((social) => ({

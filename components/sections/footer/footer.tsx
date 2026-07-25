@@ -1,5 +1,6 @@
 import React from 'react';
-import { Building2, Facebook, Instagram, Mail, PhoneCall } from 'lucide-react';
+import { Building2, Clock, Facebook, Instagram, Mail, PhoneCall } from 'lucide-react';
+import Link from 'next/link';
 
 export interface FooterProps {
   logo: React.ReactNode;
@@ -8,7 +9,15 @@ export interface FooterProps {
     phone: string;
     address: string;
     email: string;
+    nip?: string;
   };
+  openingHours?: {
+    days: string;
+    from: string;
+    to: string;
+  } | null;
+  showPrivacyPolicyLink?: boolean;
+  showTermsOfServiceLink?: boolean;
   socialLinks: Array<{
     platform: 'Facebook' | 'Instagram' | 'Twitter' | 'Linkedin' | 'Youtube';
     url: string;
@@ -19,7 +28,16 @@ export interface FooterProps {
   }>;
 }
 
-export function Footer({ logo, showcaseImage, contact, socialLinks, recommendedLinks }: FooterProps) {
+export function Footer({
+  logo,
+  showcaseImage,
+  contact,
+  openingHours,
+  showPrivacyPolicyLink,
+  showTermsOfServiceLink,
+  socialLinks,
+  recommendedLinks,
+}: FooterProps) {
   const getSocialIcon = (platform: string) => {
     switch (platform) {
       case 'Facebook':
@@ -98,6 +116,23 @@ export function Footer({ logo, showcaseImage, contact, socialLinks, recommendedL
                       </a>
                     </p>
                   </div>
+
+                  {/* Opening hours */}
+                  {openingHours?.from && openingHours?.to && (
+                    <div className='flex items-center gap-2'>
+                      <Clock size={24} className='shrink-0 text-white' />
+                      <p className='font-montserrat text-sm tracking-[0.48px] text-white uppercase lg:text-base'>
+                        {openingHours.days}: {openingHours.from} - {openingHours.to}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* NIP */}
+                  {contact.nip && (
+                    <p className='font-montserrat text-sm tracking-[0.48px] text-white/60 uppercase lg:text-base'>
+                      NIP: {contact.nip}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -152,7 +187,7 @@ export function Footer({ logo, showcaseImage, contact, socialLinks, recommendedL
           </div>
 
           {/* Credit */}
-          <div className='mt-6 border-t border-white/10 pt-4 lg:mt-8'>
+          <div className='mt-6 flex flex-col gap-2 border-t border-white/10 pt-4 lg:mt-8 lg:flex-row lg:items-center lg:justify-between'>
             <p className='font-montserrat text-xs tracking-[0.48px] text-white/40 uppercase'>
               Realizacja:{' '}
               <a
@@ -164,6 +199,26 @@ export function Footer({ logo, showcaseImage, contact, socialLinks, recommendedL
                 ksz-web.pl
               </a>
             </p>
+            {(showPrivacyPolicyLink || showTermsOfServiceLink) && (
+              <div className='flex flex-wrap gap-4'>
+                {showPrivacyPolicyLink && (
+                  <Link
+                    href='/polityka-prywatnosci'
+                    className='font-montserrat text-xs tracking-[0.48px] text-white/40 uppercase underline decoration-solid underline-offset-2 transition-colors hover:text-primary'
+                  >
+                    Polityka prywatności
+                  </Link>
+                )}
+                {showTermsOfServiceLink && (
+                  <Link
+                    href='/regulamin'
+                    className='font-montserrat text-xs tracking-[0.48px] text-white/40 uppercase underline decoration-solid underline-offset-2 transition-colors hover:text-primary'
+                  >
+                    Regulamin
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

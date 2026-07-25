@@ -19,11 +19,30 @@ export const settingsQuery = defineQuery(`
     _id,
     title,
     description,
-    keywords,
     url,
     phone,
     address,
     mail,
+    nip,
+    openingHours{
+      days,
+      from,
+      to
+    },
+    privacyPolicy[]{
+      ...,
+      _type == 'image' => {
+        ...,
+        asset->
+      }
+    },
+    termsOfService[]{
+      ...,
+      _type == 'image' => {
+        ...,
+        asset->
+      }
+    },
     social,
     recommendedLinks[]{
       label,

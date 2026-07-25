@@ -16,3 +16,17 @@ export const urlForImage = (source) => {
     height: dimensions.height,
   };
 };
+
+// Open Graph / Twitter Card previews expect a fixed 1200x630 (1.91:1) crop regardless of the
+// source image's original dimensions — see https://ogp.me and Twitter's summary_large_image spec.
+export const urlForOgImage = (source) => {
+  if (!source || !source.asset) return;
+
+  const url = imageBuilder.image(source).width(1200).height(630).fit('crop').auto('format').url();
+
+  return {
+    src: url,
+    width: 1200,
+    height: 630,
+  };
+};

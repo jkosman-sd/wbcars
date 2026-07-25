@@ -1405,6 +1405,13 @@
         },
         "optional": true
       },
+      "nip": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "footerImage": {
         "type": "objectAttribute",
         "value": {
@@ -1478,16 +1485,6 @@
           "type": "string"
         },
         "optional": true
-      },
-      "keywords": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "array",
-          "of": {
-            "type": "string"
-          }
-        },
-        "optional": false
       },
       "openGraphImage": {
         "type": "objectAttribute",
@@ -1564,7 +1561,15 @@
           "type": "inline",
           "name": "blockContentSection"
         },
-        "optional": false
+        "optional": true
+      },
+      "termsOfService": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "blockContentSection"
+        },
+        "optional": true
       }
     }
   },

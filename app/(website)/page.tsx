@@ -7,7 +7,8 @@ import { getClient } from '@/sanity/sanity.client';
 import { pageQuery } from '@/sanity/schemas/pages/page.queries';
 
 import { getSettings } from '../../sanity/lib/get-settings';
-import { urlForImage } from '../../sanity/schemas/image';
+import { getSiteUrl } from '../../sanity/lib/get-site-url';
+import { urlForOgImage } from '../../sanity/schemas/image';
 
 export async function generateMetadata(): Promise<Metadata> {
   const slugString = '/';
@@ -15,33 +16,34 @@ export async function generateMetadata(): Promise<Metadata> {
   const client = getClient();
   const page = await client.fetch<PageQueryResult>(pageQuery, { slug: slugString });
   const defaultSettings = await getSettings();
+  const siteUrl = getSiteUrl(defaultSettings?.url);
 
   // Use page-specific metadata if available, fallback to default settings
-  const pageTitle = page?.metadata?.metaTitle || page?.title || defaultSettings?.title || 'WBCars';
+  const pageTitle = page?.metadata?.metaTitle || page?.title || defaultSettings?.title || 'WB Cars';
   const pageDescription = page?.metadata?.metaDescription || defaultSettings?.description || 'Auto detailing Tarnów';
-  const pageKeywords = page?.metadata?.keywords?.length ? page.metadata.keywords : (defaultSettings?.keywords ?? []);
+  const pageKeywords = page?.metadata?.keywords ?? [];
   const pageOgImage = page?.metadata?.ogImage || defaultSettings?.openGraphImage;
+  const ogImage = urlForOgImage(pageOgImage);
 
   return {
-    metadataBase: defaultSettings?.url ? new URL(defaultSettings?.url) : null,
+    metadataBase: siteUrl ? new URL(siteUrl) : null,
     title: pageTitle,
     description: pageDescription,
     alternates: {
-      canonical: defaultSettings?.url ? new URL(defaultSettings?.url) : null,
+      canonical: siteUrl ? new URL(siteUrl) : null,
     },
     keywords: pageKeywords,
-    authors: [{ name: 'Jakub Kosman Software Development' }, { name: 'Wojciech Szmidt' }],
     robots: page?.metadata?.noIndex ? 'noindex,nofollow' : 'index,follow',
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: defaultSettings?.url ? defaultSettings.url + slugString : undefined,
-      siteName: 'WBCars',
+      url: siteUrl ? siteUrl + slugString : undefined,
+      siteName: 'WB Cars',
       images: [
         {
-          url: urlForImage(pageOgImage)?.src || '/img/opengraph.jpg',
-          width: 800,
-          height: 600,
+          url: ogImage?.src || '/img/opengraph.jpg',
+          width: ogImage?.width || 1200,
+          height: ogImage?.height || 630,
         },
       ],
       locale: 'pl_PL',
