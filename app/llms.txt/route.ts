@@ -1,10 +1,26 @@
 import { getSettings } from '@/sanity/lib/get-settings';
 import { getSiteUrl } from '@/sanity/lib/get-site-url';
+import { getClient } from '@/sanity/sanity.client';
+import { articlesByTypeQuery } from '@/sanity/schemas/articles/article.queries';
+import type { ArticlesByTypeQueryResult } from '@/sanity/schemas/articles/article.types';
 
 export const revalidate = 3600;
 
+function formatArticleList(articles: ArticlesByTypeQueryResult, siteUrl: string, basePath: string) {
+  if (articles.length === 0) {
+    return '_(brak opublikowanych artykułów)_';
+  }
+
+  return articles.map((article) => `- [${article.title}](${siteUrl}${basePath}/${article.slug.current})`).join('\n');
+}
+
 export async function GET() {
-  const settings = await getSettings();
+  const client = getClient();
+  const [settings, howToArticles, useCaseArticles] = await Promise.all([
+    getSettings(),
+    client.fetch<ArticlesByTypeQueryResult>(articlesByTypeQuery, { type: 'how-to' }),
+    client.fetch<ArticlesByTypeQueryResult>(articlesByTypeQuery, { type: 'use-case' }),
+  ]);
   const siteUrl = getSiteUrl(settings?.url) || 'https://www.wbcars.pl';
 
   const phone = settings?.phone || '+48 577 211 777';
@@ -39,9 +55,25 @@ Aktualne pakiety i ceny usług dostępne są na stronie głównej: ${siteUrl}
 
 Najczęściej zadawane pytania o PPF, powłoki ceramiczne i pielęgnację lakieru znajdują się na stronie głównej: ${siteUrl}
 
+## Poradniki (How-To)
+
+Instrukcje krok po kroku o pielęgnacji lakieru, folii PPF i powłok ceramicznych: ${siteUrl}/poradniki
+
+${formatArticleList(howToArticles, siteUrl, '/poradniki')}
+
+## Kiedy warto (Use Case)
+
+Prawdziwe historie i realizacje z naszego studia — konkretne przykłady, kiedy dana usługa się opłaca: ${siteUrl}/kiedy-warto
+
+${formatArticleList(useCaseArticles, siteUrl, '/kiedy-warto')}
+
 ## Polityka prywatności
 
 ${siteUrl}/polityka-prywatnosci
+
+## Regulamin
+
+${siteUrl}/regulamin
 `;
 
   return new Response(body, {

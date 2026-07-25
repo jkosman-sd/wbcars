@@ -21,6 +21,7 @@ export default async function Layout({ children }: LayoutProps) {
   }));
 
   const siteUrl = getSiteUrl(settings?.url);
+  const sameAs = (settings?.social ?? []).map((link) => link.url).filter((url): url is string => Boolean(url));
 
   return (
     <SiteLayout>
@@ -33,6 +34,7 @@ export default async function Layout({ children }: LayoutProps) {
           address={settings?.address}
           nip={settings?.nip}
           openingHours={settings?.openingHours}
+          sameAs={sameAs}
         />
       )}
       <SiteLayout.Header navigationLinks={navigationLinks} />

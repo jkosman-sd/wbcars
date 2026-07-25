@@ -4,8 +4,9 @@ import { notFound } from 'next/navigation';
 import { getSettings } from '../../sanity/lib/get-settings';
 import { getSiteUrl } from '../../sanity/lib/get-site-url';
 import { getClient } from '../../sanity/sanity.client';
-import { articleQuery } from '../../sanity/schemas/articles/article.queries';
-import type { ArticleQueryResult, ArticleType } from '../../sanity/schemas/articles/article.types';
+import { articleQuery, articlesByTypeQuery } from '../../sanity/schemas/articles/article.queries';
+import type { ArticleQueryResult, ArticlesByTypeQueryResult, ArticleType } from '../../sanity/schemas/articles/article.types';
+import { urlForImage } from '../../sanity/schemas/image';
 import { ResponsiveImage } from '../ui/image/image';
 import { ArticleJsonLd } from './article-json-ld';
 import { RichText } from './shared/rich-text/rich-text';
@@ -13,6 +14,12 @@ import { RichText } from './shared/rich-text/rich-text';
 async function fetchArticle(type: ArticleType, slug: string) {
   const client = getClient();
   return client.fetch<ArticleQueryResult>(articleQuery, { slug, type });
+}
+
+export async function generateArticleStaticParams(type: ArticleType) {
+  const client = getClient();
+  const articles = await client.fetch<ArticlesByTypeQueryResult>(articlesByTypeQuery, { type });
+  return articles.map((article) => ({ slug: article.slug.current }));
 }
 
 export async function generateArticleMetadata(type: ArticleType, slug: string, hubPath: string): Promise<Metadata> {
@@ -56,6 +63,7 @@ export async function ArticleDetailPage({ type, slug, hubPath, hubLabel, typeLab
   }
 
   const siteUrl = getSiteUrl(settings?.url);
+  const coverImageUrl = article.coverImage?.image?.asset ? urlForImage(article.coverImage.image)?.src : undefined;
 
   return (
     <article className='mx-auto max-w-3xl px-4 py-16 md:px-16 lg:px-[62px] lg:py-[84px]'>
@@ -69,6 +77,7 @@ export async function ArticleDetailPage({ type, slug, hubPath, hubLabel, typeLab
           slug={article.slug.current}
           hubPath={hubPath}
           hubLabel={hubLabel}
+          image={coverImageUrl}
         />
       )}
 

@@ -1,3 +1,5 @@
+import { organizationId } from './organization-json-ld';
+
 interface ArticleJsonLdProps {
   siteUrl: string;
   title: string;
@@ -7,7 +9,7 @@ interface ArticleJsonLdProps {
   slug: string;
   hubPath: string;
   hubLabel: string;
-  authorName?: string;
+  image?: string | null;
 }
 
 export const ArticleJsonLd = ({
@@ -19,9 +21,10 @@ export const ArticleJsonLd = ({
   slug,
   hubPath,
   hubLabel,
-  authorName = 'WB Cars',
+  image,
 }: ArticleJsonLdProps) => {
   const url = `${siteUrl}${hubPath}/${slug}`;
+  const orgRef = { '@id': organizationId(siteUrl) };
 
   const schema = {
     '@context': 'https://schema.org',
@@ -31,10 +34,17 @@ export const ArticleJsonLd = ({
         headline: title,
         description: excerpt,
         url,
+        mainEntityOfPage: url,
+        inLanguage: 'pl',
         datePublished: publishedAt,
         dateModified: updatedAt || publishedAt,
-        author: { '@type': 'Organization', name: authorName },
-        publisher: { '@type': 'Organization', name: authorName },
+        ...(image && { image }),
+        author: orgRef,
+        publisher: {
+          '@type': 'Organization',
+          ...orgRef,
+          logo: { '@type': 'ImageObject', url: `${siteUrl}/images/wb-cars-logo.svg` },
+        },
       },
       {
         '@type': 'BreadcrumbList',

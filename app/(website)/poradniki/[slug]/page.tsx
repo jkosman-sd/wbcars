@@ -1,10 +1,18 @@
 import { Metadata } from 'next';
 
-import { ArticleDetailPage, generateArticleMetadata } from '../../../../components/cms/article-detail-page';
+import {
+  ArticleDetailPage,
+  generateArticleMetadata,
+  generateArticleStaticParams,
+} from '../../../../components/cms/article-detail-page';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateStaticParams() {
+  return generateArticleStaticParams('how-to');
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
