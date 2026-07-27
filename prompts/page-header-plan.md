@@ -414,7 +414,9 @@ export function SanityPageHeader({ data }) {
 ```tsx
 <>
   <PageHeader /> {/* Fixed/sticky at top */}
-  <main className="pt-20"> {/* Padding-top to account for fixed header height */}
+  <main className='pt-20'>
+    {' '}
+    {/* Padding-top to account for fixed header height */}
     {children}
   </main>
   {/* Footer would go here if it exists */}
@@ -478,19 +480,20 @@ export function SanityPageHeader({ data }) {
 
 ```tsx
 // Header container
-className="fixed top-0 left-0 right-0 z-50 w-full bg-[rgba(26,26,26,0.5)] backdrop-blur-sm"
+className = 'fixed top-0 left-0 right-0 z-50 w-full bg-[rgba(26,26,26,0.5)] backdrop-blur-sm';
 
 // Inner container
-className="flex items-center justify-between px-4 py-4 md:px-8 lg:px-16"
+className = 'flex items-center justify-between px-4 py-4 md:px-8 lg:px-16';
 
 // Logo container
-className="relative w-54 h-16"
+className = 'relative w-54 h-16';
 
 // Navigation container
-className="hidden md:flex items-center gap-8 lg:gap-10"
+className = 'hidden md:flex items-center gap-8 lg:gap-10';
 
 // Navigation link
-className="font-montserrat font-bold text-[13px] uppercase text-neutral-50 hover:text-primary transition-colors duration-200"
+className =
+  'font-montserrat font-bold text-[13px] uppercase text-neutral-50 hover:text-primary transition-colors duration-200';
 ```
 
 **Responsive Behavior Classes**:

@@ -25,6 +25,14 @@ export const settingsQuery = defineQuery(`
     address,
     mail,
     social,
+    recommendedLinks[]{
+      label,
+      href
+    },
+    openGraphImage {
+      ...,
+      asset->
+    },
     footerImage {
       ...,
       image {

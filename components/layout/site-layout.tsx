@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import { Main } from './main/main';
 import { Footer } from './footer/footer';
 import { Header } from './header/header';
+import { Main } from './main/main';
 
 interface SiteLayoutProps {
   children: ReactNode;

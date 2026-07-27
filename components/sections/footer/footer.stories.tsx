@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import Image from 'next/image';
 
-import { Footer } from './footer';
 import { ResponsiveImage } from '@/components/ui/image/image';
+
+import { Footer } from './footer';
 
 const meta: Meta<typeof Footer> = {
   title: 'Sections/Footer',
@@ -29,20 +30,17 @@ export const Default: Story = {
   args: {
     logo: (
       <div className='relative h-full w-full'>
-        <Image
-          src='/images/wb-cars-logo.svg'
-          alt='WB Cars Logo'
-          fill
-          className='object-contain object-left'
-        />
+        <Image src='/images/wb-cars-logo.svg' alt='WB Cars Logo' fill className='object-contain object-left' />
       </div>
     ),
-    showcaseImage: <ResponsiveImage
-      src="http://localhost:3845/assets/89ca914e1cb1c12985b42a8d712f08000343c39c.png"
-      alt="Blue BMW M4 car showcase"
-      aspectRatio="4/3"
-      loaderType="external"
-    />,
+    showcaseImage: (
+      <ResponsiveImage
+        src='http://localhost:3845/assets/89ca914e1cb1c12985b42a8d712f08000343c39c.png'
+        alt='Blue BMW M4 car showcase'
+        aspectRatio='4/3'
+        loaderType='external'
+      />
+    ),
     contact: {
       phone: '+48 577 211 777',
       address: 'Tarnów, ul. Gliniańska 12b',
@@ -65,20 +63,17 @@ export const WithCustomContent: Story = {
   args: {
     logo: (
       <div className='relative h-full w-full'>
-        <Image
-          src='/images/wb-cars-logo.svg'
-          alt='WB Cars Logo'
-          fill
-          className='object-contain object-left'
-        />
+        <Image src='/images/wb-cars-logo.svg' alt='WB Cars Logo' fill className='object-contain object-left' />
       </div>
     ),
-    showcaseImage: <ResponsiveImage
-      src="http://localhost:3845/assets/89ca914e1cb1c12985b42a8d712f08000343c39c.png"
-      alt="Custom car showcase"
-      aspectRatio="4/3"
-      loaderType="external"
-    />,
+    showcaseImage: (
+      <ResponsiveImage
+        src='http://localhost:3845/assets/89ca914e1cb1c12985b42a8d712f08000343c39c.png'
+        alt='Custom car showcase'
+        aspectRatio='4/3'
+        loaderType='external'
+      />
+    ),
     contact: {
       phone: '+1 234 567 890',
       address: 'New York, NY 10001',
