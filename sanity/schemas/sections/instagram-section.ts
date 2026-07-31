@@ -33,6 +33,13 @@ export const instagramSection = defineType({
       description: 'Czy wyświetlić przycisk z linkiem do profilu',
       initialValue: true,
     }),
+    defineField({
+      name: 'masonryLayout',
+      type: 'boolean',
+      title: 'Układ w formie muru zdjęć (masonry)',
+      description: 'Nieregularny mur zdjęć zamiast standardowej siatki. Domyślnie wyłączone (siatka liniowa).',
+      initialValue: false,
+    }),
   ],
   preview: {
     select: { heading: 'heading', profileHandle: 'profileHandle' },

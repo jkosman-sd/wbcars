@@ -53,6 +53,16 @@ export const ThreePosts: Story = {
   },
 };
 
+export const Masonry: Story = {
+  args: {
+    heading: 'Śledź nas na Instagramie',
+    profileHandle: 'wbcars_pl',
+    posts: MOCK_POSTS,
+    showFollowButton: true,
+    masonryLayout: true,
+  },
+};
+
 export const Empty: Story = {
   args: {
     heading: 'Śledź nas na Instagramie',

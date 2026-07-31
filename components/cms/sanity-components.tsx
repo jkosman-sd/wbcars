@@ -23,12 +23,16 @@ export const SanityComponents = async <T extends PageType>(props: SanityComponen
   const { pageType, sanityComponentsData } = props;
   const pageComponents = await sanityComponent[pageType]();
 
+  const firstImageSectionKey = sanityComponentsData.find((item) => item._type === 'imageSection')?._key;
+
   return sanityComponentsData.map((sanityComponentData) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     const Component = pageComponents[sanityComponentData._type];
     if (!Component) return null;
 
-    return <Component key={sanityComponentData._key} {...sanityComponentData} />;
+    const isFirstImageSection = sanityComponentData._type === 'imageSection' && sanityComponentData._key === firstImageSectionKey;
+
+    return <Component key={sanityComponentData._key} {...sanityComponentData} priority={isFirstImageSection} />;
   });
 };

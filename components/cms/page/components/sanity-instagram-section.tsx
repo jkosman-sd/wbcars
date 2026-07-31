@@ -6,7 +6,7 @@ import { getInstagramPosts } from '@/lib/instagram';
 type SanityInstagramSectionProps = PageSectionItem<'instagramSection'>;
 
 export const SanityInstagramSection = async (props: SanityInstagramSectionProps) => {
-  const { heading, profileHandle, postCount, showFollowButton } = props;
+  const { heading, profileHandle, postCount, showFollowButton, masonryLayout } = props;
 
   const posts = await getInstagramPosts(postCount);
 
@@ -17,6 +17,7 @@ export const SanityInstagramSection = async (props: SanityInstagramSectionProps)
         profileHandle={profileHandle}
         posts={posts}
         showFollowButton={showFollowButton ?? undefined}
+        masonryLayout={masonryLayout ?? undefined}
       />
     </PageSection>
   );

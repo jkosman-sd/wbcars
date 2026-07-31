@@ -104,7 +104,8 @@ export const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug
       heading,
       profileHandle,
       postCount,
-      showFollowButton
+      showFollowButton,
+      masonryLayout
     }
   }
 }`);

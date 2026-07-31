@@ -61,6 +61,7 @@ export type InstagramSection = {
   profileHandle: string;
   postCount: number;
   showFollowButton?: boolean;
+  masonryLayout?: boolean;
 };
 
 export type OfferSection = {
@@ -889,6 +890,7 @@ export type PageQueryResult = {
         profileHandle: string;
         postCount: number;
         showFollowButton: boolean | null;
+        masonryLayout: boolean | null;
       }
   >;
 } | null;

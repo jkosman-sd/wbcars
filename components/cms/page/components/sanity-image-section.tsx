@@ -5,10 +5,10 @@ import { ImageSection } from '@/components/sections/image-section/image-section'
 import { AspectRatio } from '@/components/ui/image/aspect-ratio';
 import { ResponsiveImage } from '@/components/ui/image/image';
 
-type SanityImageSectionProps = PageSectionItem<'imageSection'>;
+type SanityImageSectionProps = PageSectionItem<'imageSection'> & { priority?: boolean };
 
 export const SanityImageSection = (props: SanityImageSectionProps) => {
-  const section = props;
+  const { priority = false, ...section } = props;
 
   const aspectRatio: AspectRatio = section.image.aspectRatio;
   const fullWidth = section.fullWidth || false;
@@ -26,7 +26,7 @@ export const SanityImageSection = (props: SanityImageSectionProps) => {
               image={section.image.image}
               alt={section.image.image.alt || section.title || 'Zdjęcie'}
               aspectRatio={aspectRatio}
-              priority={false}
+              priority={priority}
               sizes={['(max-width: 976px) 75vw', '540px']}
             />
           )
