@@ -7,6 +7,7 @@ import { SanityContactSection } from './components/sanity-contact-section';
 import { SanityFaqSection } from './components/sanity-faq-section';
 import { SanityHeroSection } from './components/sanity-hero-section';
 import { SanityImageSection } from './components/sanity-image-section';
+import { SanityInstagramSection } from './components/sanity-instagram-section';
 import { SanityOfferSection } from './components/sanity-offer-section';
 import { SanitySubheadingSection } from './components/sanity-subheading-section';
 
@@ -17,7 +18,7 @@ type HomeSectionType = HeroSections['_type'];
 export type PageSectionItem<T extends HomeSectionType> = Extract<HeroSections, { _type: T }>;
 
 type SanityPageComponents = {
-  [key in HomeSectionType]: (props: PageSectionItem<key>) => React.ReactNode;
+  [key in HomeSectionType]: (props: PageSectionItem<key>) => React.ReactNode | Promise<React.ReactNode>;
 };
 
 export const sanityPageComponents = {
@@ -28,4 +29,5 @@ export const sanityPageComponents = {
   carouselSection: SanityCarousel,
   offerSection: SanityOfferSection,
   faqSection: SanityFaqSection,
+  instagramSection: SanityInstagramSection,
 } satisfies SanityPageComponents;

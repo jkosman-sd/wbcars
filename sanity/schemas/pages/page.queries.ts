@@ -99,6 +99,13 @@ export const pageQuery = defineQuery(`*[_type == "page" && slug.current == $slug
           }
         }
       }
+    },
+    _type == 'instagramSection' => {
+      heading,
+      profileHandle,
+      postCount,
+      showFollowButton,
+      masonryLayout
     }
   }
 }`);

@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
-    remotePatterns: [{ hostname: 'cdn.sanity.io' }, { hostname: 'picsum.photos' }],
+    remotePatterns: [
+      { hostname: 'cdn.sanity.io' },
+      { hostname: 'picsum.photos' },
+      { hostname: '*.cdninstagram.com' },
+      { hostname: '*.fbcdn.net' },
+    ],
     deviceSizes: deviceSizes as unknown as number[],
   },
   typescript: {
