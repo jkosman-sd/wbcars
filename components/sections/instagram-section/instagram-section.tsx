@@ -10,6 +10,10 @@ export interface InstagramSectionProps {
   showFollowButton?: boolean;
 }
 
+// Cycled per tile (independent of each photo's real shape) so the wall reads as an
+// irregular masonry even when the actual Instagram posts are mostly uniform (e.g. square).
+const TILE_ASPECT_RATIOS = ['aspect-[3/4]', 'aspect-square', 'aspect-[4/5]', 'aspect-[4/3]', 'aspect-square', 'aspect-[9/16]'];
+
 export const InstagramSection = ({
   heading,
   profileHandle,
@@ -22,7 +26,7 @@ export const InstagramSection = ({
     <section aria-label='Instagram' className='w-full bg-background'>
       <div>
         {heading && (
-          <div className='mb-6'>
+          <div className='mb-10'>
             <div className='h-0.5 w-full bg-primary' />
             <h2 className='mt-4 font-montserrat text-2xl font-medium uppercase leading-tight text-foreground md:text-3xl lg:text-[32px] lg:leading-8'>
               {heading}
@@ -32,40 +36,40 @@ export const InstagramSection = ({
 
         {posts.length > 0 ? (
           <>
-            <ul className='grid grid-cols-2 gap-6 lg:grid-cols-3'>
-              {posts.map((post) => (
-                <li key={post.id}>
-                  <a
-                    href={post.permalink}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='group relative block aspect-square overflow-hidden'
-                  >
-                    <NextImage
-                      src={post.mediaType === 'VIDEO' ? (post.thumbnailUrl ?? post.mediaUrl) : post.mediaUrl}
-                      alt={post.caption || `Post na Instagramie @${profileHandle}`}
-                      fill
-                      sizes='(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw'
-                      className='object-cover transition-transform duration-500 group-hover:scale-[1.02]'
-                    />
+            <div className='columns-2 lg:columns-3'>
+              {posts.map((post, index) => (
+                <a
+                  key={post.id}
+                  href={post.permalink}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={`group relative block break-inside-avoid overflow-hidden ${TILE_ASPECT_RATIOS[index % TILE_ASPECT_RATIOS.length]}`}
+                >
+                  <NextImage
+                    src={post.mediaType === 'VIDEO' ? (post.thumbnailUrl ?? post.mediaUrl) : post.mediaUrl}
+                    alt={post.caption || `Post na Instagramie @${profileHandle}`}
+                    fill
+                    priority={index === 0}
+                    sizes='(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw'
+                    className='object-cover transition-transform duration-500 group-hover:scale-[1.02]'
+                  />
 
-                    {post.mediaType === 'VIDEO' && (
-                      <div className='absolute inset-0 flex items-center justify-center bg-black/10'>
-                        <Play className='size-10 text-white drop-shadow' fill='white' aria-hidden='true' />
-                      </div>
-                    )}
+                  {post.mediaType === 'VIDEO' && (
+                    <div className='absolute inset-0 flex items-center justify-center bg-black/10'>
+                      <Play className='size-10 text-white drop-shadow' fill='white' aria-hidden='true' />
+                    </div>
+                  )}
 
-                    {post.caption && (
-                      <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 pb-4 pt-12'>
-                        <p className='line-clamp-2 font-montserrat text-xs leading-snug text-white/90'>
-                          {post.caption}
-                        </p>
-                      </div>
-                    )}
-                  </a>
-                </li>
+                  {post.caption && (
+                    <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 pb-4 pt-12'>
+                      <p className='line-clamp-2 font-montserrat text-xs leading-snug text-white/90'>
+                        {post.caption}
+                      </p>
+                    </div>
+                  )}
+                </a>
               ))}
-            </ul>
+            </div>
 
             {showFollowButton && (
               <div className='mt-6 flex justify-end'>

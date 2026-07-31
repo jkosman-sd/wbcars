@@ -14,7 +14,14 @@ export function SanityFooter(props: SanityFooterData) {
   // Używaj statycznego logo
   const logoComponent = (
     <div className='relative h-full w-full'>
-      <Image src='/images/wb-cars-logo.svg' alt='WB Cars Logo' fill className='object-contain object-left' priority />
+      <Image
+        src='/images/wb-cars-logo.svg'
+        alt='WB Cars Logo'
+        fill
+        className='object-contain object-left'
+        priority
+        sizes='(min-width: 1024px) 350px, 100vw'
+      />
     </div>
   );
 
