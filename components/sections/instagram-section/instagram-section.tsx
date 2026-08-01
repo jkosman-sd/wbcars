@@ -34,7 +34,7 @@ const Tile = ({ post, profileHandle, priority, aspectClassName }: TileProps) => 
       alt={post.caption || `Post na Instagramie @${profileHandle}`}
       fill
       priority={priority}
-      sizes='(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw'
+      sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
       className='object-cover transition-transform duration-500 group-hover:scale-[1.02]'
     />
 
@@ -76,7 +76,7 @@ export const InstagramSection = ({
         {posts.length > 0 ? (
           <>
             {masonryLayout ? (
-              <div className='columns-2 lg:columns-3'>
+              <div className='columns-1 sm:columns-2 lg:columns-3'>
                 {posts.map((post, index) => (
                   <div key={post.id} className='break-inside-avoid'>
                     <Tile
@@ -89,7 +89,7 @@ export const InstagramSection = ({
                 ))}
               </div>
             ) : (
-              <ul className='grid grid-cols-2 gap-6 lg:grid-cols-3'>
+              <ul className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
                 {posts.map((post, index) => (
                   <li key={post.id}>
                     <Tile post={post} profileHandle={profileHandle} priority={index === 0} aspectClassName='aspect-square' />
