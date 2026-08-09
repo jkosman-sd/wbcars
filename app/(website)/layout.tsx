@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 
+import { OrganizationJsonLd } from '../../components/cms/organization-json-ld';
 import { SiteLayout } from '../../components/layout/site-layout';
+import { getSettings } from '../../sanity/lib/get-settings';
+import { getSiteUrl } from '../../sanity/lib/get-site-url';
 import { getNavigationData } from '../../sanity/sanity.client';
 
 interface LayoutProps {
@@ -9,7 +12,7 @@ interface LayoutProps {
 }
 
 export default async function Layout({ children }: LayoutProps) {
-  const navigationData = await getNavigationData();
+  const [navigationData, settings] = await Promise.all([getNavigationData(), getSettings()]);
 
   const navigationLinks = (navigationData?.navigation?.navigationLinks ?? []).map((link) => ({
     label: link.label,
@@ -17,8 +20,23 @@ export default async function Layout({ children }: LayoutProps) {
     external: link.external || false,
   }));
 
+  const siteUrl = getSiteUrl(settings?.url);
+  const sameAs = (settings?.social ?? []).map((link) => link.url).filter((url): url is string => Boolean(url));
+
   return (
     <SiteLayout>
+      {siteUrl && (
+        <OrganizationJsonLd
+          siteUrl={siteUrl}
+          name={settings?.title || 'WB Cars'}
+          phone={settings?.phone}
+          email={settings?.mail}
+          address={settings?.address}
+          nip={settings?.nip}
+          openingHours={settings?.openingHours}
+          sameAs={sameAs}
+        />
+      )}
       <SiteLayout.Header navigationLinks={navigationLinks} />
       <SiteLayout.Main>{children}</SiteLayout.Main>
       <SiteLayout.Footer />

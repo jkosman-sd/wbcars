@@ -20,8 +20,8 @@ export const settingsType = defineType({
       name: 'footer',
     },
     {
-      title: 'Polityka prywatności',
-      name: 'privacyPolicy',
+      title: 'Dokumenty prawne',
+      name: 'legal',
     },
   ],
   fields: [
@@ -120,6 +120,43 @@ export const settingsType = defineType({
       group: 'footer',
     }),
     defineField({
+      name: 'nip',
+      type: 'string',
+      title: 'NIP',
+      description: 'Numer Identyfikacji Podatkowej firmy. Używany w danych strukturalnych (LocalBusiness).',
+      group: 'footer',
+    }),
+    defineField({
+      name: 'openingHours',
+      type: 'object',
+      title: 'Godziny otwarcia',
+      group: 'footer',
+      fields: [
+        defineField({
+          name: 'days',
+          type: 'string',
+          title: 'Dni',
+          description: 'Np. "Poniedziałek - Piątek"',
+          initialValue: 'Poniedziałek - Piątek',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'from',
+          type: 'string',
+          title: 'Otwarte od',
+          description: 'Format GG:MM, np. "08:00"',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'to',
+          type: 'string',
+          title: 'Otwarte do',
+          description: 'Format GG:MM, np. "18:00"',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'footerImage',
       type: 'responsiveImage',
       title: 'Footer Showcase Image',
@@ -206,15 +243,6 @@ export const settingsType = defineType({
       description: 'Enter SEO Meta Description',
     }),
     defineField({
-      title: 'Meta Keywords',
-      name: 'keywords',
-      group: 'metadata',
-      type: 'array',
-      of: [{ type: 'string' }],
-      validation: (Rule) => Rule.required(),
-      description: 'Enter SEO Meta Keywords',
-    }),
-    defineField({
       name: 'openGraphImage',
       type: 'image',
       title: 'Open Graph Image',
@@ -225,8 +253,15 @@ export const settingsType = defineType({
       name: 'privacyPolicy',
       type: 'blockContentSection',
       title: 'Polityka prywatności',
-      group: 'privacyPolicy',
-      validation: (Rule) => Rule.required(),
+      description: 'Wyświetlana pod adresem /polityka-prywatnosci. Jeśli puste — link nie pojawi się w stopce.',
+      group: 'legal',
+    }),
+    defineField({
+      name: 'termsOfService',
+      type: 'blockContentSection',
+      title: 'Regulamin',
+      description: 'Wyświetlany pod adresem /regulamin. Jeśli puste — link nie pojawi się w stopce.',
+      group: 'legal',
     }),
   ],
 });

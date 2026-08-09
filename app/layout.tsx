@@ -1,7 +1,7 @@
 import './globals.css';
 
 import React from 'react';
-import type { Metadata } from 'next';
+import type { Viewport } from 'next';
 import { Michroma, Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({
@@ -17,6 +17,10 @@ const michroma = Michroma({
   weight: ['400'],
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  themeColor: '#121212',
+};
 
 export default function RootLayout({
   children,
