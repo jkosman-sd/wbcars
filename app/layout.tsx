@@ -1,6 +1,7 @@
 import './globals.css';
 
 import React from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Michroma, Montserrat } from 'next/font/google';
 
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pl'>
-      <body className={`${montserrat.variable} ${michroma.variable} antialiased`}>{children}</body>
+      <body className={`${montserrat.variable} ${michroma.variable} antialiased`}>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
